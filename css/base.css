@@ -1,16 +1,17 @@
 body {background-color: black;}
-h1 {
-    font-size: 3em;
-    text-align: center;
+.title {
     background-color: crimson;
+    display: block;
+    text-align: center;
+    font-size: 3em;
     font-family: 'Hahmlet', serif;
-
 }
 
 .foem {
-    display: block;
     background-color: crimson;
+    display: block;
     text-align: center;
     font-family: 'Hahmlet', serif;
     font-size: 2em;
+    margin-top: 17em;
 }
