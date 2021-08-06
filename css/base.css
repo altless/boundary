@@ -1,0 +1,16 @@
+body {background-color: black;}
+h1 {
+    font-size: 3em;
+    text-align: center;
+    background-color: crimson;
+    font-family: 'Hahmlet', serif;
+
+}
+
+.foem {
+    display: block;
+    background-color: crimson;
+    text-align: center;
+    font-family: 'Hahmlet', serif;
+    font-size: 2em;
+}
