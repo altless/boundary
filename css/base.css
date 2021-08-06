@@ -5,6 +5,10 @@ body {background-color: black;}
     text-align: center;
     font-size: 3em;
     font-family: 'Hahmlet', serif;
+    padding: 0.8em 1em 1em 1em;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 7.5em;
 }
 
 .foem {
@@ -13,5 +17,10 @@ body {background-color: black;}
     text-align: center;
     font-family: 'Hahmlet', serif;
     font-size: 2em;
-    margin-top: 17em;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top : 20em;
+    margin-bottom : 10em;
+    padding : 0.8em 1em 1em 1em;
+}
 }
