@@ -23,4 +23,26 @@ body {background-color: black;}
     margin-bottom : 10em;
     padding : 0.8em 1em 1em 1em;
 }
+
+div{
+    color: antiquewhite;
+    background-color: aqua;
+}
+
+.d{
+    display: inline-block;
+    background-color: blue;
+    margin-right: 100px;
+    color: chartreuse;
+}
+#dd{
+    height: 300px;
+    width: 200px;
+}
+
+span{
+
+    height: 300px;
+    margin-top: 0px;
+    margin-bottom: 10px;
 }
