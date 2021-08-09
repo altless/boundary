@@ -1,13 +1,20 @@
-body {background-color: black;}
+body {background-color;}
 .title {
     background-color: crimson;
     display: block;
     text-align: center;
     font-size: 3em;
     font-family: 'Hahmlet', serif;
+<<<<<<< HEAD
     position: absolute;
         left: 50%;
         transform: translateX(-50%);
+=======
+    padding: 0.8em 1em 1em 1em;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 7.5em;
+>>>>>>> 8c4acb646f0bd3a1224cf6c633c8d8ef75a4fc17
 }
 
 .foem {
@@ -16,8 +23,49 @@ body {background-color: black;}
     text-align: center;
     font-family: 'Hahmlet', serif;
     font-size: 2em;
+<<<<<<< HEAD
     margin-top: 17em;
     position: absolute;
         left: 50%;
         transform: translateX(-50%);
 }
+=======
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top : 20em;
+    margin-bottom : 10em;
+    padding : 0.8em 1em 1em 1em;
+}
+
+div{
+    color: antiquewhite;
+    background-color: aqua;
+}
+
+.d{
+    display: inline-block;
+    background-color: blue;
+    margin-right: 100px;
+    color: chartreuse;
+}
+#dd{
+    height: 300px;
+    width: 200px;
+}
+
+span{
+
+    height: 300px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+.abab{
+    color: aqua;
+    margin-top: 20px;
+}
+
+table{
+    border-color: black;
+    border: 3px;
+}
+>>>>>>> 8c4acb646f0bd3a1224cf6c633c8d8ef75a4fc17
