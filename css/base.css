@@ -5,6 +5,9 @@ body {background-color: black;}
     text-align: center;
     font-size: 3em;
     font-family: 'Hahmlet', serif;
+    position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
 }
 
 .foem {
@@ -14,4 +17,7 @@ body {background-color: black;}
     font-family: 'Hahmlet', serif;
     font-size: 2em;
     margin-top: 17em;
+    position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
 }
