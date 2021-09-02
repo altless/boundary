@@ -4,7 +4,9 @@ html {
     font-size: 14px;
     font-family: 'Song Myung', serif;
 }
+
 .pre-container {
+    z-index: 1;
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -17,6 +19,9 @@ html {
     justify-content: center;
     align-items: center;
     background: #2b2b2b;
+}
+.hidden{
+    display: none;
 }
 .headcopy {
     font-size: 2rem;
@@ -40,4 +45,66 @@ html {
     transform: scale(1.2);
     background: #000;
     transition: 2s;
+}
+
+
+/*시 관련된 css */
+
+.main-container {
+    display: none;
+}
+
+.judge-field {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #2b2b2b;
+    display: flex;
+}
+.left-field {
+    top:0;
+    left: 50vw;;
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: cornsilk 3px dotted;
+}
+.right-field {
+    display: flex;
+    top:0;
+    left: 50vw;;
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: cornsilk 3px dotted;
+
+}
+.right-balance {
+    top : -20vh;
+    display: flex;
+    flex-direction: column-reverse;
+    position: absolute;
+    width: 25vw;
+    height: 70vh;
+    border-bottom: 3px #fff solid;
+    color: rgba(200, 30, 30, 0.8);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+.left-balance {
+    top : -20vh;
+    display: flex;
+    flex-direction: column-reverse;
+    position: absolute;
+    width: 25vw;
+    height: 70vh;
+    color: rgba(200, 30, 30, 0.8);
+    font-weight: 700;
+    font-size: 1.5rem;
+    border-bottom: 3px #fff solid;
 }
