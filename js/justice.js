@@ -56,6 +56,7 @@ function addChild(e) {
 			console.log(soonseo,total,rightValue,leftValue);
 			} 
 	else {
+		document.querySelector('.main-container').classList.remove('.hidden')
 		return false;
 	}
 }
