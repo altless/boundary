@@ -37,6 +37,8 @@ function addChild(e) {
 			};
 			right.style.transform = `translate3d(0, ${-total}px, 0)`;
 			left.style.transform = `translate3d(0, ${total}px, 0)`;
+			right.style.transform = `rotate(${total/2500}turn)`;
+			left.style.transform = `rotate(${total/2500}turn)`;
 			return false;
 		} else {
 				alert('균형이 깨졌습니다.');
@@ -53,10 +55,11 @@ function addChild(e) {
 				}
 				right.style.transform = `translate3d(0, ${-total}px, 0)`;
 				left.style.transform = `translate3d(0, ${total}px, 0)`;
+				right.style.transform = `rotate(${total/2500}turn)`;
+				left.style.transform = `rotate(${total/2500}turn)`;
 				return false;
 			}
-			console.log(soonseo,total,rightValue,leftValue);
-			} 
+		} 
 	else {
 		alert("end")
 		return false;
