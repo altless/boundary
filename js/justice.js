@@ -20,7 +20,7 @@ function firstOpen(e) {
 
 function addChild(e) {
 	if (soonseo < 23) {
-		if (total < 50 && total > -50) {
+		if (total <= 60 && total >= -60) {
 
 			if (e.target.classList.contains('right-balance' &&'right-field')){
 				right.appendChild(paragraph[soonseo]);
@@ -37,9 +37,10 @@ function addChild(e) {
 			};
 			right.style.transform = `translate3d(0, ${-total}px, 0)`;
 			left.style.transform = `translate3d(0, ${total}px, 0)`;
+			return false;
 		} else {
 				alert('균형이 깨졌습니다.');
-				if (total <= -50){
+				if (total <= -60){
 					total += 10;
 					right.removeChild(rightP[rightValue])
 					rightValue -= 1;
@@ -52,11 +53,12 @@ function addChild(e) {
 				}
 				right.style.transform = `translate3d(0, ${-total}px, 0)`;
 				left.style.transform = `translate3d(0, ${total}px, 0)`;
+				return false;
 			}
 			console.log(soonseo,total,rightValue,leftValue);
 			} 
 	else {
-		document.querySelector('.main-container').classList.remove('.hidden')
+		alert("end")
 		return false;
 	}
 }
