@@ -3,10 +3,9 @@
 
 @keyframes sample-ani {
     0%{
-        transform: translate3d(0, 0, 0);
     }
     100% {
-        transform: translate3d(0, 1800px, 0);
+        transform: rotateY(100deg);
     }
 }
 
@@ -33,10 +32,8 @@ body {
     text-decoration-thickness: 1rem;
     text-decoration: #ff2c5a;
 }
-.container p {
-    padding: 0;
-    margin-bottom: -0.8rem;
-}
 .animaiting {
-    animation: sample-ani 4s 0.2s;
+    position: absolute;
+    background: royalblue;
+    animation: sample-ani 2s 0.2s infinite alternate;
 }
