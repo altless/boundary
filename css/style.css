@@ -109,11 +109,13 @@ body[data-char='ragirl'] {
 }
 a:any-link {
     text-decoration: none;
-    color: white;
+    color: inherit
 }
 
 .wall-front-a {
     transform: translateZ(300vw);
+    background: white;
+    color: khaki;
 }
 
 .wall-front-b {
