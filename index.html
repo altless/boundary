@@ -1,104 +1,87 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>경계</title>
-    <link rel="stylesheet" href="/css/practice.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3D wall</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@100;200;300;400;500;600;700;800;900&display=swap');
     </style>
 </head>
-<body>
-    <div class="sample">회전 애니메이션 추가</div>
-    <div class="title">경계</div>
-    <div class="foem">
-        경계는 모호하다 <br>
-        그래서 경계의 경계는 모호하다 <br> 
-        사람사람의 경계는 모호하다 <br>
-        옳고그름의 경계도 모호하다 <br>
+
+<body onresize="parent.resizeTo(1800,900)" onload="parent.resizeTo(1800,900)">
+    <div class="progress-bar-con"> 
+        <div class="progress-bar"></div>
     </div>
-    <div class="foem">
-        그러니 우리는 경계해야한다
+    <div class="select-character">
+        <button class="select-character-btn select-character-btn-ilbuni" data-char="ilbuni"></button>
+        <button class="select-character-btn select-character-btn-ragirl" data-char="ragirl"></button>
     </div>
-    <div id="dd">아아아</div>
 
-    <a class="d">aaaa</a>
-    <span class="d">spanspanspan</span>
-    <em class="d">EMEMEMEME</em>
-    <b class="d">bbbbbbbb</b>
-    <ruby>아야어여우유오요<rt>ah ya uh yeo oo you </rt> </ruby>
-    <p>이건<cite>"아야어유" </cite>중</p>
-    <pre><kbd>alt + ctrl + z</kbd>
-    <code>function dfer(){
-        dfoiaewjfoiajwaeoiafwejojiawef
-    }
-    </code></pre>
+    <div class="world">
+        <div class="stage">
+            <div class="house">
+                <section class="wall-container-LR">
+                    <object class="wall wall-left" data="images/LRPLUS3.svg" type="image/svg+xml"></object>
+                </section>
+                <section class="wall-container-LR">
+                    <object class="wall wall-right" data="images/LRPLUS3.svg" type="image/svg+xml"></object>
+                </section>
+                <section class="wall-container-UD">
+                    <object class="wall wall-top" data="images/UDPLUS3.svg" type="image/svg+xml"></object>
+                </section>
+                <section class="wall-container-UD">
+                    <object class="wall wall-bottom" data="images/UDPLUS3.svg" type="image/svg+xml"></object>
+                </section>
 
-    <a href="https://naver.com/" target="_blank" hreflang="ko" rel="mother" type="html" title="네이버">
-        <img src="/images/crystal1.jpg"></a>
-    
+                <section class="wall wall-front wall-front-a">
+                    <div class="wall-content">
+                        <h2 class="wall-title"><a href="https://youtube.com">옳고 그름의 경계</a></h2>
+                    </div>
+                </section>
+                <section class="wall wall-front wall-front-b">
+                    <div class="wall-content">
+                        <h2 class="wall-title"><a href="https://naver.com">꿈과 현실의 경계</a></h2>
+                    </div>
+                </section>
+                <section class="wall wall-front wall-front-c">
+                    <div class="wall-content">
+                        <h2 class="wall-title"><a href="http://daum.net">사람과 사람의 경계</a></h2>
+                    </div>
+                </section>
+                <section class="wall wall-front wall-front-d">
+                    <div class="wall-content">
+                        <h2 class="wall-title"><a href="http://google.com">삶과 죽음의 경계</a></h2>
+                    </div>
+                    <object class="wall wall-frontend" data="images/F.svg" type="image/svg+xml"></object>
+                </section>
 
-    <ul title="dfdf">
-        fdfdf
-        <li class="abab">dfd</li>
-        <li>feafwe</li>
-        <li class="abab">feafwe</li>
-        <li>feafwe</li>
-        <li class="abab">feafwe</li>
-        <li>feafwe</li>
-    </ul>
-    <ol start="111" reversed>
-        <li>dfdfd</li>
-        <li>dfdfd</li>
-        <li>dfdfd</li>
-        <li>dfdfd</li>
-        <li>dfdfd</li>
-    </ol>
+            </div>
+            <!--// house -->
 
+            <!-- 캐릭터 놓이는 곳 -->
 
+        </div>
+        <!--// stage -->
+    </div>
+    <!--// world -->
 
-    <table border="1">
-        <caption>연습</caption>
-        <col style="background-color: aquamarine;">
-        <col style="background-color: chartreuse;">
-        <colgroup style="background-color :chocolate">
-            <col>
-            <col>
-        </colgroup>
-        <tr >
-            <td>1</td>
-            <td rowspan="3">2 <br> 2 <br> 2</td>
-            <td>3</td>
-            <td>4</td>
-        </tr>
-        <tr>
-            <td colspan="3">1 2 3</td>
-           
-          
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-        </tr>
-        <tr>
-            <td>1</td>
-          
-            <td>3</td>
-            <td>4</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>2</td>
-            
-            
-        </tr>
-    </table>
-    
-    <a href="https://www.naver.com" target="_blank"><img src="/images/이모티콘 주차금지.png">네이버</a>
-    <a href="https://www.daum.net" target="_blank">네이버</a>
-
-
-
+    <script src="js/Character.js"></script>
+    <script src="js/wall3d.js"></script>
+    <script>
+        (function () {
+            const useragent = window.navigator.userAgent.toLowerCase();
+            if (useragent.indexOf('chrome') < 0 && useragent.indexOf('safari') < 0) {
+                document.body.style.cssText = 'height: auto';
+                document.body.innerHTML =
+                    '<p style="padding: 20px; line-height: 1.6">본 예제는 Full CSS 3D가 사용된 페이지로, webkit 기반 브라우저(크롬, 사파리 등)에서 확인하며 학습하시는게 좋습니다.<br>CSS 3D 부분 외에는 브라우저 상관없이 인터랙티브 웹 페이지 개발을 위해 필수적이고 유용한 내용들을 다루고 있으니 꼭 처음부터 끝까지 공부해 보세요! :)</p>';
+            }
+        })();
+    </script>
 </body>
+
 </html>

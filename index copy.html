@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3D wall</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style copy.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@100;200;300;400;500;600;700;800;900&display=swap');
+    </style>
+</head>
+
+<body onresize="parent.resizeTo(1800,900)" onload="parent.resizeTo(1800,900)">
+    <div class="progress-bar-con"> 
+        <div class="progress-bar"></div>
+    </div>
+    <div class="select-character">
+        <button class="select-character-btn select-character-btn-ilbuni" data-char="ilbuni"></button>
+        <button class="select-character-btn select-character-btn-ragirl" data-char="ragirl"></button>
+    </div>
+
+    <div class="world">
+        <div class="stage">
+            <div class="house">
+                <section class="wall-container-LR">
+                    <object class="wall wall-left" data="images/wallLR.png" type="image/svg+xml"></object>
+                </section>
+                <section class="wall-container-LR">
+                    <object class="wall wall-right" data="images/wallLR.png" type="image/svg+xml"></object>
+                <!-- </section>
+                <section class="wall-container-UD">
+                    <object class="wall wall-top" data="images/wall1.png" type="image/svg+xml"></object>
+                </section>
+                <section class="wall-container-UD">
+                    <object class="wall wall-bottom" data="images/wall1.png" type="image/svg+xml"></object>
+                </section>
+                <section class="wall-container-F">
+                    <object class="wall wall-frontend" data="images/wall1.png" type="image/svg+xml"></object>
+                </section> -->
+            </div>
+            <!--// house -->
+        </div>
+        <!--// stage -->
+    </div>
+    <!--// world -->
+    <script src="js/wall3d.js"></script>
+
+</body>
+
+</html>

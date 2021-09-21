@@ -1,3 +1,29 @@
+/* animation */
+@keyframes ani-head {
+    to {
+        transform: rotateX(-10deg);
+    }
+}
+
+@keyframes ani-running-leg {
+    from {
+        transform: rotateX(-30deg);
+    }
+
+    to {
+        transform: rotateX(30deg);
+    }
+}
+
+@keyframes ani-running-arm {
+    from {
+        transform: rotateY(30deg);
+    }
+
+    to {
+        transform: rotateY(-30deg);
+    }
+}
 
 body {
     height: 500vw;
@@ -9,6 +35,11 @@ body {
     background: black;
     transition: background .5s;
 }
+
+body[data-char='ragirl'] {
+    background: #ff7200;
+}
+
 /* world */
 .world {
     position: fixed;
@@ -30,13 +61,11 @@ body {
 }
 
 .house {
-
-    transform: translateZ(-490vw);
     transform-style: preserve-3d;
 }
 
 .wall {
-    position: absolute;
+    position:absolute;
     left: 0;
     top: 0;
     width: 103vw;
@@ -44,40 +73,47 @@ body {
 }
 
 .wall-left {
-    width: 1000vw;
+    width: 100vw;
     background: black;
-    transform: rotateY(90deg) translate3D(0, -2vw, -499.9vw) scaleY(1.6);
+    transform: rotateY(90deg) translate3D(-450vw,0,-50vw) scaleY(1);
 }
 
 .wall-right {
-    width: 1000vw;
+    width: 100vw;
     background: black;
-    transform: rotateY(90deg) translate3D(0, -2vw, -400.1vw) scaleY(1.6);
+    transform: rotateY(90deg) translate3D(-450vw, 0, 50vw) scaleY(1);
 }
 
 .wall-top {
-    height: 1000vw;
-    background: black;
-    transform: rotateX(270deg) translate3D(-9.2vw, 0vh, -498vw) scaleX(1.12);
+    width: 100vw;
+    height: 100vh;
+    transform-origin: 50% 50%;
+    background-color: yellow;
+    background-image: url('images/wall-1.png');
+    background-repeat: repeat;
+    transform: rotateX(90deg) translate3D(0vw, 974vh, 50vh) scaleX(1);
 }
 
 .wall-bottom {
-    height: 1000vw;
-    background: black;
-    transform: rotateX(270deg) translate3D(-9.2vw, 0vh, -456vw) scaleX(1.12);
+    width: 100vw;
+    height: 100vh;
+    transform-origin: 50% 50%;
+    background-color: yellow ;
+    background-image: url('images/wall-1.png');
+    background-repeat: repeat;
+    transform: rotateX(90deg) translate3D(0vw, 974vh, -50vh) scaleX(1);
 }
-
 .wall-frontend {
     width: 100vw;
-    height: 90vh;
-    transform: translate3D(0, 2vh, 0) scaleX(1.28);
+    height: 100vh;
+    transform: translate3D(0,0,451vw) scaleX(1);
+    overflow: visible;
 }
 
 .wall-title {
     font-size: 10vh;
     font-weight: 900;
 }
-
 a:any-link {
     text-decoration: none;
     color: inherit
@@ -85,8 +121,6 @@ a:any-link {
 
 .wall-front-a {
     transform: translateZ(300vw);
-    background: white;
-    color: khaki;
 }
 
 .wall-front-b {
@@ -98,8 +132,7 @@ a:any-link {
 }
 
 .wall-front-d {
-    transform: translateZ(-499.8vw);
-    background: black;
+    transform: translateZ(-500vw);
 }
 
 .wall-content {
