@@ -1,0 +1,12 @@
+@keyframes sample-ani {
+    0%{
+        transform: translate3d(0,0,0);
+    }
+    100%{
+        transform: translate3d(0,1080px,0);
+    }
+}
+
+.sample {
+    animation: sample-ani 5s 0.5s;
+}
