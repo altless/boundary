@@ -206,10 +206,21 @@
     </script>
     <script>
         var dragged;
-
+        var leftWeight = 0;
+        var rightWeight = 0;
+        var poemElem = document.querySelectorAll('#draggable');
+        console.log(poemElem.length);
+        
+        function addPoemClassNum() {
+            for (var i = 0; i < poemElem.length; i++) {
+                poemElem[i].classList.add(i+1);
+                console.log("elem",i+1,"add class");
+            }
+        }
+        addPoemClassNum();
         /* events fired on the draggable target */
         document.addEventListener("drag", function (event) {
-
+            // console.log('drag');
         }, false);
 
         document.addEventListener("dragstart", function (event) {
@@ -217,17 +228,20 @@
             dragged = event.target;
             // make it half transparent
             event.target.style.opacity = .5;
+            // console.log('dragstart');
         }, false);
 
         document.addEventListener("dragend", function (event) {
             // reset the transparency
             event.target.style.opacity = "";
+            // console.log('dragend');
         }, false);
 
         /* events fired on the drop targets */
         document.addEventListener("dragover", function (event) {
             // prevent default to allow drop
             event.preventDefault();
+            // console.log('dragover');
         }, false);
 
         document.addEventListener("dragenter", function (event) {
@@ -235,7 +249,7 @@
             if (event.target.className == "dropzone") {
                 event.target.style.background = "purple";
             }
-
+            // console.log('dragenter');
         }, false);
 
         document.addEventListener("dragleave", function (event) {
@@ -243,7 +257,7 @@
             if (event.target.className == "dropzone") {
                 event.target.style.background = "";
             }
-
+            // console.log('dragleave');
         }, false);
 
         document.addEventListener("drop", function (event) {
@@ -254,8 +268,16 @@
                 event.target.style.background = "";
                 dragged.parentNode.removeChild(dragged);
                 event.target.appendChild(dragged);
+                if (event.target.id == "left-field") {
+                    leftWeight ++;
+                    console.log('leftWeight=',leftWeight);
+                }
+                if (event.target.id == "right-field") {
+                    rightWeight ++;
+                    console.log('rightWeight=',rightWeight);
+                }
             }
-
+            // console.log('drop');
         }, false);
     </script>
 </body>
