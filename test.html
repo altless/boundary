@@ -3,189 +3,53 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/default.css">
     <style>
-        /* .no-drag {-ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;} */
-        .container {
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            background: blue;
-        }
-
         #draggable {
-            width: auto;
-            height: 2.5vh;
-            padding-top: 20px;
+            user-select: none;
+            width: 200px;
+            height: 20px;
             text-align: center;
-            background: transparent;
-        }
-
-        #poem-box {
-            -ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;
-            width: 20vw;
-            height: 80vh;
-            background-color: black;
-            color: blanchedalmond;
-            font-size: 1.3rem;
-        }
-
-        .dropzone-house {
-            -ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;
-            display: flex;
-            justify-content: center;
-            width: 80vw;
-            height: 80vh;
+            background: white;
         }
 
         .dropzone {
-            -ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;
-            width: 40vw;
-            height: 80vh;
+            user-select: none;
+            width: 200px;
+            height: 20px;
+            background: blueviolet;
+            margin-bottom: 10px;
+            padding: 10px;
         }
 
-        .dropzone-house #draggable {
-            padding: 0;
-        }
-
-        #left-field {
-            background: chartreuse;
-            display: flex;
-            flex-direction: column-reverse;
-            align-items: center;
-        }
-
-        #right-field {
-            background: coral;
-            display: flex;
-            flex-direction: column-reverse;
-            align-items: center;
+        .dropbox {
+            -webkit-user-drag: none;
+            width: 200px;
+            height: 20px;
+            background: blanchedalmond;
+            margin-bottom: 10px;
+            padding: 10px;
         }
     </style>
 </head>
 
 <body>
-
-    <div class="container">
-        <div class="dropzone-house">
-            <div class="dropzone" id="left-field"></div>
-            <div class="dropzone" id="right-field"></div>
-        </div>
-        <div class="backdropzone" id="poem-box">
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                사진에 대고
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                사진을 찍는다
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>사진을 찍은 사진은</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>사진의 정의에 부합하는</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>진짜 사진이다</p>
-            </div> <br>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>마침 사진 속에서</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>나체의 여인이 걸어 나온다</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>그녀는 비에 흠뻑 젖었다</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>입에 벼락을 물고 나타났다</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>관능적인 천변의 누드</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>창밖에 멀리 날아가지 못 한</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>철새들의 사체가 쌓여 있다</p>
-            </div><br>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>그녀가 입을 열자</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>사람들은 우산을 찾아 허둥댄다</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>우산의 뼈를 살이라고 부르는 것만큼</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>우스운 일도 없어요</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>그렇담 인간의 뼈는 언제 살이 되나?</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>빗물이 턱끝까지 차올랐다</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>벽이 녹아내리며</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>철새들의 흉한 몰골이 드러났다</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>렌즈처럼 반짝이는</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>수면 위로</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>환영받지 못 한 밀항자들의</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>몽타주가 드리운다</p>
-            </div><br>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>사진전에 모인 사람들을 두고</p>
-            </div>
-            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                <p>사진 찍는 소리가 들린다</p>
-            </div>
+    <div class="dropbox">
+        <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+            This div is draggable
         </div>
     </div>
-
+    <div class="dropzone" id="1"></div>
+    <div class="dropzone" id="2"></div>
+    <div class="dropzone" id="3"></div>
     <script>
         var dragged;
-        var prevElem;
-        var leftWeight = 0;
-        var rightWeight = 0;
-        var totalWeight = 0;
-        var leftORright; // possitive = left / nagative = right
-        var poemElem = document.querySelectorAll('#draggable');
-        var poemBox = document.querySelector('#poem-box');
-
-        function addPoemClassNum() {
-            for (var i = 0; i < poemElem.length; i++) {
-                poemElem[i].classList.add(i + 1);
-                // console.log("elem", i + 1, "add class");
-            }
-        }
-        addPoemClassNum();
-
-        function crash() {
-            console.log('균형이 깨졌습니다.');
-            // reset field
-        }
-
-
 
         /* events fired on the draggable target */
         document.addEventListener("drag", function (event) {
-            // console.log('drag');
+
         }, false);
 
         document.addEventListener("dragstart", function (event) {
@@ -193,20 +57,17 @@
             dragged = event.target;
             // make it half transparent
             event.target.style.opacity = .5;
-            // console.log('dragstart');
         }, false);
 
         document.addEventListener("dragend", function (event) {
             // reset the transparency
             event.target.style.opacity = "";
-            // console.log('dragend');
         }, false);
 
         /* events fired on the drop targets */
         document.addEventListener("dragover", function (event) {
             // prevent default to allow drop
             event.preventDefault();
-            // console.log('dragover');
         }, false);
 
         document.addEventListener("dragenter", function (event) {
@@ -214,7 +75,7 @@
             if (event.target.className == "dropzone") {
                 event.target.style.background = "purple";
             }
-            // console.log('dragenter');
+
         }, false);
 
         document.addEventListener("dragleave", function (event) {
@@ -222,116 +83,24 @@
             if (event.target.className == "dropzone") {
                 event.target.style.background = "";
             }
-            // console.log('dragleave');
+
         }, false);
 
         document.addEventListener("drop", function (event) {
             // prevent default action (open as link for some elements)
+            var prevParent = dragged.parentNode;
+            console.log(prevParent);
             event.preventDefault();
             // move dragged elem to the selected drop target
-            console.log('this is', event.target.id);
-            // console.log('prevElem=',prevElem);
-            /// 깨짐 - 절대값 차이가 3이남 이때 낮은것에는 오픈해주고 싶음 
-            if (!(event.target.className == "backdropzone")){
-                if (Math.abs(leftWeight - rightWeight) >= 3) { ///////////////////////////////////////////////////////// 균형 깨짐
-                    crash();
-                    // poemBox.classList.add('no-drag');
-                    if (event.target.className == "dropzone") {
-                        event.target.style.background = "";
-                    }
-                    // if (leftORright) {
-                    //     // // var leftField = document.querySelectorAll('#left-field #draggable');
-                    //     // // prevElem.parentNode.removeChild(prevElem);
-                    //     // // poemBox.appendChild(prevElem);
-                    //     // dragged.parentNode.removeChild(dragged);
-                    //     // poemBox.appendChild(dragged);
-                    //     // // leftWeight -= 0.01;
-                    // } else {
-                    //     // // var rightField = document.querySelectorAll('#right-field #draggable');
-                    //     // // prevElem.parentNode.removeChild(prevElem);
-                    //     // // poemBox.appendChild(prevElem);
-                    //     // dragged.parentNode.removeChild(dragged);
-                    //     // poemBox.appendChild(dragged);
-                    //     // // rightWeight -= 0.01;
-                    // }
-                    console.log('leftWeight=', leftWeight);
-                    console.log('rightWeight=', rightWeight);
-                    false;
-                } else { ///////////////////////////////////////////////////////// 보통 상태
-                    // add weight 
-                    // leftWeight = parseInt(leftWeight);
-                    // rightWeight = parseInt(rightWeight);
-                    // poemBox.classList.remove('no-drag');
-                    if (event.target.className == "dropzone") {
-                        event.target.style.background = "";
-                        dragged.parentNode.removeChild(dragged);
-                        event.target.appendChild(dragged);
-                    }
-                    if (event.target.id == "left-field") {
-                        leftWeight++;
-                        console.log('leftWeight=', leftWeight);
-                        console.log('rightWeight=', rightWeight);
-                        leftORright = true;
-                    }
-                    if (event.target.id == "right-field") {
-                        rightWeight++;
-                        console.log('leftWeight=', leftWeight);
-                        console.log('rightWeight=', rightWeight);
-                        leftORright = false;
-                    }
-                    totalWeight = leftWeight + rightWeight;
-                    console.log('totalWeight=', totalWeight);
-                    // prevElem = dragged;
-                }
-            } 
-            else {
-                if (event.target.className == "dropzone") {
-                    event.target.style.background = "";
-                    dragged.parentNode.removeChild(dragged);
-                    event.target.appendChild(dragged);
-                }
-                if (event.target.className == "backdropzone") {
-                    event.target.style.background = "";
-                    dragged.parentNode.removeChild(dragged);
-                    event.target.appendChild(dragged);
-                    if (leftORright) {
-                        leftWeight -= 1;
-                    } else {
-                        rightWeight -= 1;
-                    }
-                }
-                if (event.target.id == "left-field") {
-                    leftWeight++;
-                    console.log('leftWeight=', leftWeight);
-                    console.log('rightWeight=', rightWeight);
-                    leftORright = true;
-                }
-                if (event.target.id == "right-field") {
-                    rightWeight++;
-                    console.log('leftWeight=', leftWeight);
-                    console.log('rightWeight=', rightWeight);
-                    leftORright = false;
-                }
-                totalWeight = leftWeight + rightWeight;
-                console.log('leftWeight=', leftWeight);
-                console.log('rightWeight=', rightWeight);
-                console.log('totalWeight=', totalWeight);
-                // if (!dragged.parentNode == "poem-box") {
-                //     // if (!dragged.parentNode == poemBox) {
-
-                //     // }
-                //     if (leftORright) {
-                //         leftWeight -= 1;
-                //     } else {
-                //         rightWeight -= 1;
-                //     }
-                //     console.log(dragged.parentNode);
-                //     console.log('leftWeight=', leftWeight);
-                //     console.log('rightWeight=', rightWeight);
-                // }
+            if (event.target.className == "dropzone" || "dropbox") {
+                event.target.style.background = "";
+                dragged.parentNode.removeChild(dragged);
+                event.target.appendChild(dragged);
             }
-            // console.log(dragged);
-            // console.log('drop');
+            var nowParent = dragged.parentNode;
+            console.log('it is', dragged);
+            console.log('P is', nowParent);
+
         }, false);
     </script>
 </body>
