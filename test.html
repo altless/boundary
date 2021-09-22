@@ -18,13 +18,14 @@
         }
 
         #draggable {
+            width: auto;
             height: 2.5vh;
-            padding-top:20px;
+            padding-top: 20px;
             text-align: center;
             background: transparent;
         }
 
-        #peom-box {
+        #poem-box {
             width: 20vw;
             height: 80vh;
             background-color: black;
@@ -43,6 +44,7 @@
             width: 40vw;
             height: 80vh;
         }
+
         .dropzone-house #draggable {
             padding: 0;
         }
@@ -60,40 +62,17 @@
             flex-direction: column-reverse;
             align-items: center;
         }
-
-        /* .box {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background-color: pink;
-            border: 5px solid orange;
-            cursor: pointer;
-            z-index: 2;
-        }
-        .dropbox {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            margin: auto;
-            width: 400px;
-            height: 400px;
-            background-color: bisque;
-        } */
     </style>
 </head>
 
 <body>
-    <!-- <div class="box"></div>
-    <div class="dropbox"></div> -->
 
     <div class="container">
         <div class="dropzone-house">
             <div class="dropzone" id="left-field"></div>
             <div class="dropzone" id="right-field"></div>
         </div>
-        <div class="dropzone" id="peom-box">
+        <div class="dropzone" id="poem-box">
             <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
                 사진에 대고
             </div>
@@ -176,48 +155,30 @@
     </div>
 
     <script>
-        // const $box = document.querySelector('.box');
-        // const dropbox = document.querySelector('.dropbox');
-
-
-        // const initial = { x: 0, y: 0 };
-        // const offset = { x: 0, y: 0 };
-
-        // const move = e => {
-        //     offset.x = e.clientX - initial.x;
-        //     offset.y = e.clientY - initial.y;
-
-        //     $box.style.transform = `translate3d(${offset.x}px,${offset.y}px,0)`;
-
-        // };
-
-        // $box.addEventListener('mousedown', e => {
-        //     initial.x = e.clientX - offset.x;
-        //     initial.y = e.clientY - offset.y;
-        //     document.addEventListener('mousemove', move);
-        // });
-
-        // document.addEventListener('mouseup', (e) => {
-        //     if (e.target === dropbox) {
-        //         console.log(e.target);
-        //     }
-        //     document.removeEventListener('mousemove', move);
-        // })
-    </script>
-    <script>
         var dragged;
+        var prevElem;
         var leftWeight = 0;
         var rightWeight = 0;
+        var totalWeight = 0;
+        var leftORright; // possitive = left / nagative = right
         var poemElem = document.querySelectorAll('#draggable');
-        console.log(poemElem.length);
-        
+        var poemBox = document.querySelector('#poem-box');
+
         function addPoemClassNum() {
             for (var i = 0; i < poemElem.length; i++) {
-                poemElem[i].classList.add(i+1);
-                console.log("elem",i+1,"add class");
+                poemElem[i].classList.add(i + 1);
+                // console.log("elem", i + 1, "add class");
             }
         }
         addPoemClassNum();
+
+        function crash() {
+            alert('균형이 깨졌습니다.');
+            // reset field
+        }
+
+
+
         /* events fired on the draggable target */
         document.addEventListener("drag", function (event) {
             // console.log('drag');
@@ -264,19 +225,60 @@
             // prevent default action (open as link for some elements)
             event.preventDefault();
             // move dragged elem to the selected drop target
-            if (event.target.className == "dropzone") {
-                event.target.style.background = "";
-                dragged.parentNode.removeChild(dragged);
-                event.target.appendChild(dragged);
-                if (event.target.id == "left-field") {
-                    leftWeight ++;
-                    console.log('leftWeight=',leftWeight);
+            console.log('this is',event.target.id);
+            // console.log('prevElem=',prevElem);
+            if (Math.abs(leftWeight - rightWeight) > 3) {
+                crash();
+                
+                if (leftORright) {
+                    var leftField = document.querySelectorAll('#left-field #draggable');
+                    prevElem.parentNode.removeChild(prevElem);
+                    poemBox.appendChild(prevElem);
+                    leftWeight -= 1;
+                } else {
+                    var rightField = document.querySelectorAll('#right-field #draggable');
+                    prevElem.parentNode.removeChild(prevElem);
+                    poemBox.appendChild(prevElem);
+                    rightWeight -= 1;
                 }
-                if (event.target.id == "right-field") {
-                    rightWeight ++;
-                    console.log('rightWeight=',rightWeight);
+                console.log('leftWeight=', leftWeight);
+                console.log('rightWeight=', rightWeight);
+                false;
+            } else {
+                if (event.target.className == "dropzone") {
+                    event.target.style.background = "";
+                    dragged.parentNode.removeChild(dragged);
+                    event.target.appendChild(dragged);
+
+                    // add weight 
+                    if (event.target.id == "left-field") {
+                        leftWeight++;
+                        console.log('leftWeight=', leftWeight);
+                        console.log('rightWeight=', rightWeight);
+                        leftORright = true;
+                    }
+                    if (event.target.id == "right-field") {
+                        rightWeight++;
+                        console.log('leftWeight=', leftWeight);
+                        console.log('rightWeight=', rightWeight);
+                        leftORright = false;
+                    }
+                    if (event.target.id == "poem-box") {
+                        if (leftORright) {
+                            leftWeight -= 1;
+                        } else {
+                            rightWeight -= 1;
+                        }
+                        console.log('leftWeight=', leftWeight);
+                        console.log('rightWeight=', rightWeight);
+                    }
+                    totalWeight = leftWeight + rightWeight;
+                    console.log('totalWeight=',totalWeight);
                 }
+                prevElem = dragged;
             }
+            
+            // console.log(dragged);
             // console.log('drop');
         }, false);
     </script>
