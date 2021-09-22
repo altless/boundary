@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/default.css">
     <style>
+        /* .no-drag {-ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;} */
         .container {
             top: 0;
             left: 0;
@@ -26,6 +27,7 @@
         }
 
         #poem-box {
+            -ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;
             width: 20vw;
             height: 80vh;
             background-color: black;
@@ -34,6 +36,7 @@
         }
 
         .dropzone-house {
+            -ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;
             display: flex;
             justify-content: center;
             width: 80vw;
@@ -41,6 +44,7 @@
         }
 
         .dropzone {
+            -ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;
             width: 40vw;
             height: 80vh;
         }
@@ -72,7 +76,7 @@
             <div class="dropzone" id="left-field"></div>
             <div class="dropzone" id="right-field"></div>
         </div>
-        <div class="dropzone" id="poem-box">
+        <div class="backdropzone" id="poem-box">
             <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
                 사진에 대고
             </div>
@@ -173,7 +177,7 @@
         addPoemClassNum();
 
         function crash() {
-            alert('균형이 깨졌습니다.');
+            console.log('균형이 깨졌습니다.');
             // reset field
         }
 
@@ -225,32 +229,44 @@
             // prevent default action (open as link for some elements)
             event.preventDefault();
             // move dragged elem to the selected drop target
-            console.log('this is',event.target.id);
+            console.log('this is', event.target.id);
             // console.log('prevElem=',prevElem);
-            if (Math.abs(leftWeight - rightWeight) > 3) {
-                crash();
-                
-                if (leftORright) {
-                    var leftField = document.querySelectorAll('#left-field #draggable');
-                    prevElem.parentNode.removeChild(prevElem);
-                    poemBox.appendChild(prevElem);
-                    leftWeight -= 1;
-                } else {
-                    var rightField = document.querySelectorAll('#right-field #draggable');
-                    prevElem.parentNode.removeChild(prevElem);
-                    poemBox.appendChild(prevElem);
-                    rightWeight -= 1;
-                }
-                console.log('leftWeight=', leftWeight);
-                console.log('rightWeight=', rightWeight);
-                false;
-            } else {
-                if (event.target.className == "dropzone") {
-                    event.target.style.background = "";
-                    dragged.parentNode.removeChild(dragged);
-                    event.target.appendChild(dragged);
-
+            /// 깨짐 - 절대값 차이가 3이남 이때 낮은것에는 오픈해주고 싶음 
+            if (!(event.target.className == "backdropzone")){
+                if (Math.abs(leftWeight - rightWeight) >= 3) { ///////////////////////////////////////////////////////// 균형 깨짐
+                    crash();
+                    // poemBox.classList.add('no-drag');
+                    if (event.target.className == "dropzone") {
+                        event.target.style.background = "";
+                    }
+                    // if (leftORright) {
+                    //     // // var leftField = document.querySelectorAll('#left-field #draggable');
+                    //     // // prevElem.parentNode.removeChild(prevElem);
+                    //     // // poemBox.appendChild(prevElem);
+                    //     // dragged.parentNode.removeChild(dragged);
+                    //     // poemBox.appendChild(dragged);
+                    //     // // leftWeight -= 0.01;
+                    // } else {
+                    //     // // var rightField = document.querySelectorAll('#right-field #draggable');
+                    //     // // prevElem.parentNode.removeChild(prevElem);
+                    //     // // poemBox.appendChild(prevElem);
+                    //     // dragged.parentNode.removeChild(dragged);
+                    //     // poemBox.appendChild(dragged);
+                    //     // // rightWeight -= 0.01;
+                    // }
+                    console.log('leftWeight=', leftWeight);
+                    console.log('rightWeight=', rightWeight);
+                    false;
+                } else { ///////////////////////////////////////////////////////// 보통 상태
                     // add weight 
+                    // leftWeight = parseInt(leftWeight);
+                    // rightWeight = parseInt(rightWeight);
+                    // poemBox.classList.remove('no-drag');
+                    if (event.target.className == "dropzone") {
+                        event.target.style.background = "";
+                        dragged.parentNode.removeChild(dragged);
+                        event.target.appendChild(dragged);
+                    }
                     if (event.target.id == "left-field") {
                         leftWeight++;
                         console.log('leftWeight=', leftWeight);
@@ -263,21 +279,57 @@
                         console.log('rightWeight=', rightWeight);
                         leftORright = false;
                     }
-                    if (event.target.id == "poem-box") {
-                        if (leftORright) {
-                            leftWeight -= 1;
-                        } else {
-                            rightWeight -= 1;
-                        }
-                        console.log('leftWeight=', leftWeight);
-                        console.log('rightWeight=', rightWeight);
-                    }
                     totalWeight = leftWeight + rightWeight;
-                    console.log('totalWeight=',totalWeight);
+                    console.log('totalWeight=', totalWeight);
+                    // prevElem = dragged;
                 }
-                prevElem = dragged;
+            } 
+            else {
+                if (event.target.className == "dropzone") {
+                    event.target.style.background = "";
+                    dragged.parentNode.removeChild(dragged);
+                    event.target.appendChild(dragged);
+                }
+                if (event.target.className == "backdropzone") {
+                    event.target.style.background = "";
+                    dragged.parentNode.removeChild(dragged);
+                    event.target.appendChild(dragged);
+                    if (leftORright) {
+                        leftWeight -= 1;
+                    } else {
+                        rightWeight -= 1;
+                    }
+                }
+                if (event.target.id == "left-field") {
+                    leftWeight++;
+                    console.log('leftWeight=', leftWeight);
+                    console.log('rightWeight=', rightWeight);
+                    leftORright = true;
+                }
+                if (event.target.id == "right-field") {
+                    rightWeight++;
+                    console.log('leftWeight=', leftWeight);
+                    console.log('rightWeight=', rightWeight);
+                    leftORright = false;
+                }
+                totalWeight = leftWeight + rightWeight;
+                console.log('leftWeight=', leftWeight);
+                console.log('rightWeight=', rightWeight);
+                console.log('totalWeight=', totalWeight);
+                // if (!dragged.parentNode == "poem-box") {
+                //     // if (!dragged.parentNode == poemBox) {
+
+                //     // }
+                //     if (leftORright) {
+                //         leftWeight -= 1;
+                //     } else {
+                //         rightWeight -= 1;
+                //     }
+                //     console.log(dragged.parentNode);
+                //     console.log('leftWeight=', leftWeight);
+                //     console.log('rightWeight=', rightWeight);
+                // }
             }
-            
             // console.log(dragged);
             // console.log('drop');
         }, false);
