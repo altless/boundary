@@ -9,6 +9,11 @@ body {
     background: black;
     transition: background .5s;
 }
+object {
+    pointer-events: none;
+}
+
+
 /* world */
 .world {
     position: fixed;

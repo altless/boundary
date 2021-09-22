@@ -1,0 +1,155 @@
+
+object {
+    pointer-events: none;
+}
+
+body {
+    height: 500vw;
+    font-family: 'Apple SD Gothic Neo', 'Roboto', 'Noto Sans KR', NanumGothic, 'Malgun Gothic', sans-serif;
+    -webkit-overflow-scrolling: touch;
+    color: white;
+    font-size: 1px;
+    font-family: 'Hahmlet', serif;
+    background: black;
+}
+
+/* world */
+.world {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    perspective: 1500px;
+}
+
+.stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    transform-style: preserve-3d;
+}
+
+.house {
+    transform-style: preserve-3d;
+}
+
+.wall {
+    position:absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.wall-container-top {
+    position: absolute;
+    height: 1000vw;
+    width: 100vw;
+    background: #555;
+    transform: rotatex(90deg) translate3D(0, 10vw, 500vw) scaleY(1);
+}
+
+.wall-bottom {
+    height: 100%;
+    background-image: url(/images/wallLR.png);
+    background-size: 100vw 25vw;
+}
+
+.wall-container-bottom {
+    position: absolute;
+    height: 1000vw;
+    width: 100vw;
+    background: #555;
+    transform: rotatex(90deg) translate3D(0, 10vw, 451.2vw) scaleY(1);
+}
+
+.wall-top {
+    height: 100%;
+    background-image: url(/images/wallLR.png);
+    background-size: 100vw 25vw;
+}
+
+
+.wall-container-left {
+    position: absolute;
+    width: 1000vw;
+    height: 100vh;
+    background:#555;
+    transform: rotateY(90deg) translate3D(-10vw, 0, -500vw) scaleY(1);
+}
+
+.wall-left {
+    width: 100%;
+    background-image: url(/images/wallLR.png);
+    background-size: 25vw 100vh;
+}
+
+.wall-container-right {
+    position: absolute;
+    width: 1000vw;
+    height: 100vh;
+    background:blue;
+    transform: rotateY(90deg) translate3D(-10vw, 0, -400vw) scaleY(1);
+}
+
+.wall-right {
+    width: 100%;
+    background-image: url(/images/wallLR.png);
+    background-size: 25vw 100vh;
+}
+
+.wall-front-1 {
+    width: 100vw;
+    height: 100vh;
+    background-color: blue;
+}
+
+/* .wall-title {
+    font-size: 10vh;
+    font-weight: 900;
+a:any-link {
+    text-decoration: none;
+    color: inherit
+}
+
+.wall-front-a {
+    transform: translateZ(300vw);
+}
+
+.wall-front-b {
+    transform: translateZ(50vw);
+}
+
+.wall-front-c {
+    transform: translateZ(-200vw);
+}
+
+.wall-front-d {
+    transform: translateZ(-500vw);
+}
+
+.wall-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+} */
+
+.progress-bar-con {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 5px;
+    background: #555;
+}
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    background: white;
+}
