@@ -47,6 +47,9 @@ html {
     transition: 2s;
 }
 
+.test {
+    background-image: url(../images/wall1.png);
+}
 
 /*시 관련된 css */
 

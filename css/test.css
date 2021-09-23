@@ -1,0 +1,7 @@
+.test {
+
+    width: 100vw;
+    height: 100vh;
+    background-image: url(/images/wallLR.png);
+    background-size: 10vh 10vh;
+}
