@@ -14,12 +14,35 @@
             height: 100vh;
             overflow: hidden;
         }
-
+        .menubar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 10vh;
+            background: black;
+            border-bottom: 2px solid white;
+        }
+        .menubar p {
+            font-size: 2rem;
+            color: white;
+            padding-right: 30vw;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        .footer {
+            margin-top: 2px;
+            width: 100vw;
+            height: 10vh;
+            background: black;
+        }
         .container {
             top: 0;
             left: 0;
             width: 100vw;
-            height: 100vh;
+            height: 80vh;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -43,9 +66,10 @@
             width: 20vw;
             height: 80vh;
             background-color: black;
-            color: blanchedalmond;
+            color: white;
             font-size: 0.75rem;
             line-height: 0.6rem;
+            border-left: 2px solid white;
         }
         .dropzone-house #draggable {
             height: 3.2vh;
@@ -61,14 +85,14 @@
             justify-content: center;
             width: 80vw;
             height: 80vh;
-            color: blanchedalmond;
+            color: white;
             font-size: 1rem;
         }
         .left-house {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: chartreuse;
+            background: rgba(0, 0, 0, 1);
             width: 40vw;
             height: 80vh;
         }
@@ -76,7 +100,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: cornflowerblue;
+            background: rgba(0, 0, 0, 1);
             width: 40vw;
             height: 80vh;
         }
@@ -90,7 +114,7 @@
             user-select: none;
             width: 20vw;
             height: 60vh;
-            background: blue;
+            background: transparent;
             display: flex;
             flex-direction: column-reverse;
             align-items: center;
@@ -107,8 +131,7 @@
             user-select: none;
             width: 20vw;
             height: 60vh;
-            background: blueviolet;
-            border: blanchedalmond solid 3px;
+            background: transparent;
             display: flex;
             flex-direction: column-reverse;
             align-items: center;
@@ -119,7 +142,8 @@
             top:70vh;
             width: 20vw;
             height: 10vh;
-            background: darkcyan;
+            border: white 2px solid;
+            background: transparent;
             border-radius: 0 0 50% 50% ;
             transition: 2s;
         }
@@ -128,7 +152,7 @@
             top:70vh;
             width: 20vw;
             height: 10vh;
-            background: yellowgreen;
+            border: white 2px solid;
             border-radius: 0 0 50% 50% ;
             transition: 2s;
         }
@@ -151,7 +175,10 @@
 </head>
 
 <body>
-
+    <div class="menubar">
+        <p>옳고 그름의 경계</p>
+        <a href="index.html">홈으로 이동</a>
+    </div>
     <div class="container">
         <div class="dropzone-house">
             <div class="left-house">
@@ -244,6 +271,9 @@
             </div>
         </div>
     </div>
+    <footer class="footer">
+
+    </footer>
 
     <script>
         var dragged;
