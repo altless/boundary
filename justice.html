@@ -1,56 +1,524 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>justice</title>
-    <link rel="stylesheet" href="/css/default.css">
-    <link rel="stylesheet" href="/css/base.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/default.css">
+    <style>
+        /* .no-drag {-ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;} */
+        body {
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background: black;
+        }
+
+        #draggable {
+            width: auto;
+            height: 2.5vh;
+            text-align: center;
+            background: transparent;
+            padding: 0.53rem;
+        }
+
+        #poem-box {
+            -ms-user-select: none;
+            -moz-user-select: -moz-none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+            width: 20vw;
+            height: 80vh;
+            background-color: black;
+            color: blanchedalmond;
+            font-size: 0.75rem;
+            line-height: 0.6rem;
+        }
+        .dropzone-house #draggable {
+            height: 3.2vh;
+        }
+
+        .dropzone-house {
+            -ms-user-select: none;
+            -moz-user-select: -moz-none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+            display: flex;
+            justify-content: center;
+            width: 80vw;
+            height: 80vh;
+            color: blanchedalmond;
+            font-size: 1rem;
+        }
+        .left-house {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: chartreuse;
+            width: 40vw;
+            height: 80vh;
+        }
+        .right-house {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: cornflowerblue;
+            width: 40vw;
+            height: 80vh;
+        }
+        .left-dropzone {
+            position: absolute;
+            top : 10vh;
+            -ms-user-select: none;
+            -moz-user-select: -moz-none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+            width: 20vw;
+            height: 60vh;
+            background: blue;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            transition: 2s;
+        }
+
+        .right-dropzone {
+            position: absolute;
+            top : 10vh;
+            -ms-user-select: none;
+            -moz-user-select: -moz-none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+            width: 20vw;
+            height: 60vh;
+            background: blueviolet;
+            border: blanchedalmond solid 3px;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            transition: 2s;
+        }
+        .left-floor {
+            position: absolute;
+            top:70vh;
+            width: 20vw;
+            height: 10vh;
+            background: darkcyan;
+            border-radius: 0 0 50% 50% ;
+            transition: 2s;
+        }
+        .right-floor {
+            position: absolute;
+            top:70vh;
+            width: 20vw;
+            height: 10vh;
+            background: yellowgreen;
+            border-radius: 0 0 50% 50% ;
+            transition: 2s;
+        }
+
+        .dropzone-house #draggable {
+            padding: 0;
+        }
+
+        @media (max-width:1024px) {
+            #poem-box {
+                font-size: 0.5rem;
+            }
+        }
+        @media (max-width:780px) {
+            #poem-box {
+                font-size: 5px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <div class="pre-container">
-        <p class="headcopy"> 옳고 그름의 경계</p>
-        <button class="first-open">눌러서 <br>입장하기</button>
+
+    <div class="container">
+        <div class="dropzone-house">
+            <div class="left-house">
+                <div class="left-dropzone" id="left-field"></div>
+                <div class="left-floor"></div>
+            </div>
+            <div class="right-house">
+                <div class="right-dropzone" id="right-field"></div>
+                <div class="right-floor"></div>
+            </div>
+        </div>
+        <div class="poem-dropzone" id="poem-box">
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                사진에 대고
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                사진을 찍는다
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>사진을 찍은 사진은</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>사진의 정의에 부합하는</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>진짜 사진이다</p>
+            </div> <br>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>마침 사진 속에서</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>나체의 여인이 걸어 나온다</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>그녀는 비에 흠뻑 젖었다</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>입에 벼락을 물고 나타났다</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>관능적인 천변의 누드</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>창밖에 멀리 날아가지 못 한</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>철새들의 사체가 쌓여 있다</p>
+            </div><br>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>그녀가 입을 열자</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>사람들은 우산을 찾아 허둥댄다</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>우산의 뼈를 살이라고 부르는 것만큼</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>우스운 일도 없어요</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>그렇담 인간의 뼈는 언제 살이 되나?</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>빗물이 턱끝까지 차올랐다</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>벽이 녹아내리며</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>철새들의 흉한 몰골이 드러났다</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>렌즈처럼 반짝이는</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>수면 위로</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>환영받지 못 한 밀항자들의</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>몽타주가 드리운다</p>
+            </div><br>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>사진전에 모인 사람들을 두고</p>
+            </div>
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                <p>사진 찍는 소리가 들린다</p>
+            </div>
+        </div>
     </div>
-    <h1 class="poem-title">사진전에 모인 사람들</h1>
-    <div class="main-container hidden">
-        <div class="poem">
-            <p>사진에 대고</p>
-            <p>사진을 찍는다</p>
-            <p>사진의 정의에 부합하는</p>
-            <p>진짜 사진이다</p>
-            <p>나체의 여인이 걸어 나온다</p>
-            <p>그녀는 비에 흠뻑 젖었다</p>
-            <p>입에 벼락을 물고 나타났다</p>
-            <p>관능적인 천변의 누드</p>
-            <p>창밖에 멀리 날아가지 못 한</p>
-            <p>철새들의 사체가 쌓여 있다</p>
-            <p>그녀가 입을 열자</p>
-            <p>전시장에도 비가 내리고</p>
-            <p>우산의 뼈를 살이라고 부르는 것만큼</p>
-            <p>우스운 일도 없어요</p>
-            <p>그렇담 인간의 뼈는 언제 살이 되나?</p>
-            <p>빗물이 턱끝까지 차올랐다</p>
-            <p>벽이 녹아내리며</p>
-            <p>철새들의 흉한 몰골이 드러났다</p>
-            <p>렌즈처럼 반짝이는</p>
-            <p>수면 위로</p>
-            <p>환영받지 못 한 밀항자들의</p>
-            <p>사진전에 모인 사람들을 두고</p>
-            <p>사진 찍는 소리가 들린다</p>
-        </div>
-    </div> 
-    <div class="judge-field test" >
-        <div class="right-field">
-            <div class="right-balance"></div>
-        </div>
-        <div class="left-field">
-            <div class="left-balance"></div>
-        </div>
-    </div>
-    
-    
-    <script src="/js/justice.js"></script>
+
+    <script>
+        var dragged;
+        var prevElem;
+        var leftWeight = 0;
+        var rightWeight = 0;
+        var totalWeight = 0;
+        // var leftORright; // possitive = left / nagative = right
+        var poemElem = document.querySelectorAll('#draggable');
+        var poemBox = document.querySelector('#poem-box');
+        var leftDropzone = document.querySelector('.left-dropzone');
+        var rightDropzone = document.querySelector('.right-dropzone');
+        var leftFloor = document.querySelector('.left-floor');
+        var rightFloor = document.querySelector('.right-floor');
+
+        // function addPoemClassNum() {
+        //     for (var i = 0; i < poemElem.length; i++) {
+        //         poemElem[i].classList.add(i + 1);
+        //         // console.log("elem", i + 1, "add class");
+        //     }
+        // }
+        // addPoemClassNum();
+
+        function crash(gap) {
+            var value = gap*60;
+            
+            console.log(gap);
+            var setId = setInterval(() => {
+                leftDropzone.style.transform = `translateY(${value}vh)`;
+            leftFloor.style.transform = `translateY(${value}vh)`;
+            rightDropzone.style.transform = `translateY(${-value}vh)`;
+            rightFloor.style.transform = `translateY(${-value}vh)`;
+            }, 100);
+
+            setTimeout(function(){
+                clearInterval(setId);
+                floorMove();
+                alert("균형이 깨졌습니다.")   
+            },700);
+            
+        }
+
+        function floorMove () { //weight에 따라 이동시키는 함수 
+            var value = (leftWeight - rightWeight)*2;
+            leftDropzone.style.transform = `translateY(${value}vh)`;
+            leftFloor.style.transform = `translateY(${value}vh)`;
+            rightDropzone.style.transform = `translateY(${-value}vh)`;
+            rightFloor.style.transform = `translateY(${-value}vh)`;
+        }
+
+
+
+        /* events fired on the draggable target */
+        document.addEventListener("drag", function (event) {
+            // console.log('drag');
+        }, false);
+
+        document.addEventListener("dragstart", function (event) {
+            // store a ref. on the dragged elem
+            dragged = event.target;
+            // make it half transparent
+            event.target.style.opacity = .5;
+            // console.log('dragstart');
+        }, false);
+
+        document.addEventListener("dragend", function (event) {
+            // reset the transparency
+            event.target.style.opacity = "";
+            // console.log('dragend');
+        }, false);
+
+        /* events fired on the drop targets */
+        document.addEventListener("dragover", function (event) {
+            // prevent default to allow drop
+            event.preventDefault();
+            // console.log('dragover');
+        }, false);
+
+        document.addEventListener("dragenter", function (event) {
+            // highlight potential drop target when the draggable element enters it
+            if (event.target.className == "dropzone") {
+                event.target.style.background = "purple";
+            }
+            // console.log('dragenter');
+        }, false);
+
+        document.addEventListener("dragleave", function (event) {
+            // reset background of potential drop target when the draggable element leaves it
+            if (event.target.className == "dropzone") {
+                event.target.style.background = "";
+            }
+            // console.log('dragleave');
+        }, false);
+
+
+
+
+        document.addEventListener("drop", function (event) {
+            var prevParentElem = dragged.parentNode; //출발지
+            var nowParentElem = event.target; //목적지
+
+            if (nowParentElem.parentNode.id == draggable) {
+                false;
+            }
+            event.preventDefault();
+            // prevent default action (open as link for some elements)
+            // console.log('this is', event.target.id);
+
+            if (Math.abs(leftWeight - rightWeight) >= 3) {
+                if (leftWeight > rightWeight) { //만약 왼쪽에서 깨졌을 경우 목적지가 왼쪽이 아닌것 다 가능
+                    if (prevParentElem.className == "poem-dropzone") {
+                        if (nowParentElem.className == "poem-dropzone") {
+                            console.log('cant do that');
+                            false;
+                        }
+                        if (nowParentElem.className == "left-dropzone") {
+                            crash(1);
+                            false;
+                        }
+                        if (nowParentElem.className == "right-dropzone") {
+                            nowParentElem.style.background = "";
+                            dragged.parentNode.removeChild(dragged);
+                            nowParentElem.appendChild(dragged);
+                            rightWeight++;
+                        }
+                    };
+                    if (prevParentElem.className == "left-dropzone") {
+                        if (nowParentElem.className == "left-dropzone") {
+                            crash(1)
+                            false;
+                        }
+                        if (nowParentElem.className == "right-dropzone") {
+                            nowParentElem.style.background = "";
+                            dragged.parentNode.removeChild(dragged);
+                            nowParentElem.appendChild(dragged);
+                            leftWeight--;
+                            rightWeight++;
+                        }
+                        if (nowParentElem.className == "poem-dropzone") {
+                            nowParentElem.style.background = "";
+                            dragged.parentNode.removeChild(dragged);
+                            nowParentElem.appendChild(dragged);
+                            leftWeight--;
+                        }
+                    }
+                    if (prevParentElem.className == "right-dropzone") {
+                        if (nowParentElem.className == "right-dropzone") {
+                            console.log('cant do that');
+                            false;
+                        }
+                        if (nowParentElem.className == "left-dropzone") {
+                            crash(1)
+                            false;
+                        }
+                        if (nowParentElem.className == "poem-dropzone") {
+                            crash(1)
+                            false;
+                        }
+                    }
+                }
+                if (leftWeight < rightWeight) { //만약 오른쪽에서 깨졌을 경우 목적지가 오른쪽이 아닌것 다 가능
+                    if (prevParentElem.className == "poem-dropzone") {
+                        if (nowParentElem.className == "poem-dropzone") {
+                            console.log('cant do that');
+                            false;
+                        }
+                        if (nowParentElem.className == "left-dropzone") {
+                            nowParentElem.style.background = "";
+                            dragged.parentNode.removeChild(dragged);
+                            nowParentElem.appendChild(dragged);
+                            leftWeight++;
+                        }
+                        if (nowParentElem.className == "right-dropzone") {
+                            crash(-1)
+                            false;
+                        }
+                    }
+                    if (prevParentElem.className == "left-dropzone") {
+                        if (nowParentElem.className == "left-dropzone") {
+                            console.log('cant do that');
+                            false;
+                        }
+                        if (nowParentElem.className == "right-dropzone") {
+                            crash(-1)
+                            false;
+                        }
+                        if (nowParentElem.className == "poem-dropzone") {
+                            crash(-1)
+                            false;
+                        }
+                    }
+                    if (prevParentElem.className == "right-dropzone") {
+                        if (nowParentElem.className == "right-dropzone") {
+                            console.log('cant do that');
+                            false;
+                        }
+                        if (nowParentElem.className == "left-dropzone") {
+                            nowParentElem.style.background = "";
+                            dragged.parentNode.removeChild(dragged);
+                            nowParentElem.appendChild(dragged);
+                            leftWeight++;
+                            rightWeight--;
+                        }
+                        if (nowParentElem.className == "poem-dropzone") {
+                            nowParentElem.style.background = "";
+                            dragged.parentNode.removeChild(dragged);
+                            nowParentElem.appendChild(dragged);
+                            rightWeight--;
+                        }
+                    }
+                }
+            } else { // 평상시
+                if (prevParentElem.className == "poem-dropzone") {
+                    if (nowParentElem.className == "poem-dropzone") {
+                        console.log('cant do that');
+                        false;
+                    }
+                    if (nowParentElem.className == "left-dropzone") {
+                        nowParentElem.style.background = "";
+                        dragged.parentNode.removeChild(dragged);
+                        nowParentElem.appendChild(dragged);
+                        leftWeight++;
+                    }
+                    if (nowParentElem.className == "right-dropzone") {
+                        nowParentElem.style.background = "";
+                        dragged.parentNode.removeChild(dragged);
+                        nowParentElem.appendChild(dragged);
+                        rightWeight++;
+                    }
+                };
+                if (prevParentElem.className == "left-dropzone") {
+                    if (nowParentElem.className == "left-dropzone") {
+                        console.log('cant do that');
+                        false;
+                    }
+                    if (nowParentElem.className == "right-dropzone") {
+                        nowParentElem.style.background = "";
+                        dragged.parentNode.removeChild(dragged);
+                        nowParentElem.appendChild(dragged);
+                        leftWeight--;
+                        rightWeight++;
+                    }
+                    if (nowParentElem.className == "poem-dropzone") {
+                        nowParentElem.style.background = "";
+                        dragged.parentNode.removeChild(dragged);
+                        nowParentElem.appendChild(dragged);
+                        leftWeight--;
+                    }
+                }
+                if (prevParentElem.className == "right-dropzone") {
+                    if (nowParentElem.className == "right-dropzone") {
+                        console.log('cant do that');
+                        false;
+                    }
+                    if (nowParentElem.className == "left-dropzone") {
+                        nowParentElem.style.background = "";
+                        dragged.parentNode.removeChild(dragged);
+                        nowParentElem.appendChild(dragged);
+                        leftWeight++;
+                        rightWeight--;
+                    }
+                    if (nowParentElem.className == "poem-dropzone") {
+                        nowParentElem.style.background = "";
+                        dragged.parentNode.removeChild(dragged);
+                        nowParentElem.appendChild(dragged);
+                        rightWeight--;
+                    }
+                }
+
+                totalWeight = leftWeight + rightWeight;
+                console.log('L', leftWeight, 'R', rightWeight, 'total', totalWeight);
+            }
+            floorMove();
+        }, false);
+    </script>
 </body>
+
 </html>
