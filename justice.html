@@ -14,63 +14,102 @@
             height: 100vh;
             overflow: hidden;
         }
+
+        /* div, span, article, section, header, footer, aside, p, ul, li, fieldset, legend, label, a, nav, form {
+	        box-sizing:content-box;
+        } */
+        .ob {
+            position: absolute;
+            top: 8vh;
+            left: 9vw;
+            width: 90vw;
+            height: auto;
+            background: transparent;
+            -ms-user-select: none;
+            -moz-user-select: -moz-none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+            pointer-events: none;
+        }
+
         .menubar {
             display: flex;
-            justify-content: center;
-            align-items: center;
             width: 100vw;
-            height: 10vh;
+            height: 7.5vh;
             background: black;
-            border-bottom: 2px solid white;
+            border-bottom: 2px solid #df00ff;
         }
-        .menubar p {
+
+        .title-space {
+            display: flex;
+            padding-left: 1vw;
+            align-items: center;
+            width: 80vw;
+            height: 7.5vh;
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: #df00ff;
+            color: black;
+        }
+        .subtitle-space {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20vw;
+            height: 7.5vh;
             font-size: 2rem;
-            color: white;
-            padding-right: 30vw;
+            font-weight: 900;
+            background: transparent;
+            border: #df00ff solid 3px;
+            color: black;
         }
-        a {
+        .menubar a {
             text-decoration: none;
             color: white;
         }
+
         .footer {
-            margin-top: 2px;
             width: 100vw;
-            height: 10vh;
+            height: 7.5vh;
             background: black;
+            border-top: 2px solid #df00ff;
         }
+
         .container {
             top: 0;
             left: 0;
             width: 100vw;
-            height: 80vh;
+            height: 85vh;
             display: flex;
             flex-direction: row;
             align-items: center;
-            background: black;
+            background-color: black;
         }
 
         #draggable {
             width: auto;
-            height: 2.5vh;
+            height: 2.7vh;
             text-align: center;
             background: transparent;
-            padding: 0.53rem;
         }
 
         #poem-box {
+            padding-top: 5vh;
             -ms-user-select: none;
             -moz-user-select: -moz-none;
             -webkit-user-select: none;
             -khtml-user-select: none;
             user-select: none;
             width: 20vw;
-            height: 80vh;
-            background-color: black;
-            color: white;
-            font-size: 0.75rem;
+            height: 85vh;
+            background-color: transparent;
+            color: #df00ff;
+            font-size: 1.2rem;
             line-height: 0.6rem;
-            border-left: 2px solid white;
+            border-left: 2px solid #df00ff;
         }
+
         .dropzone-house #draggable {
             height: 3.2vh;
         }
@@ -84,36 +123,41 @@
             display: flex;
             justify-content: center;
             width: 80vw;
-            height: 80vh;
+            height: 85vh;
+            background-image: url(images/3dspace.png);
+            background-size: 80vw 85vh;
             color: white;
-            font-size: 1rem;
+            font-size: 1.2rem;
         }
+
         .left-house {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: rgba(0, 0, 0, 1);
+            background: rgba(0, 0, 0, 0);
             width: 40vw;
-            height: 80vh;
+            height: 85vh;
         }
+
         .right-house {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: rgba(0, 0, 0, 1);
+            background: rgba(0, 0, 0, 0);
             width: 40vw;
-            height: 80vh;
+            height: 85vh;
         }
+
         .left-dropzone {
             position: absolute;
-            top : 10vh;
+            top: 10vh;
             -ms-user-select: none;
             -moz-user-select: -moz-none;
             -webkit-user-select: none;
             -khtml-user-select: none;
             user-select: none;
             width: 20vw;
-            height: 60vh;
+            height: 65vh;
             background: transparent;
             display: flex;
             flex-direction: column-reverse;
@@ -123,37 +167,39 @@
 
         .right-dropzone {
             position: absolute;
-            top : 10vh;
+            top: 10vh;
             -ms-user-select: none;
             -moz-user-select: -moz-none;
             -webkit-user-select: none;
             -khtml-user-select: none;
             user-select: none;
             width: 20vw;
-            height: 60vh;
+            height: 65vh;
             background: transparent;
             display: flex;
             flex-direction: column-reverse;
             align-items: center;
             transition: 2s;
         }
+
         .left-floor {
             position: absolute;
-            top:70vh;
+            top: 70vh;
             width: 20vw;
             height: 10vh;
-            border: white 2px solid;
+            /* border: #df00ff 2px solid; */
             background: transparent;
-            border-radius: 0 0 50% 50% ;
+            border-radius: 0 0 50% 50%;
             transition: 2s;
         }
+
         .right-floor {
             position: absolute;
-            top:70vh;
+            top: 70vh;
             width: 20vw;
             height: 10vh;
-            border: white 2px solid;
-            border-radius: 0 0 50% 50% ;
+            /* border: #df00ff 2px solid; */
+            border-radius: 0 0 50% 50%;
             transition: 2s;
         }
 
@@ -166,6 +212,7 @@
                 font-size: 0.5rem;
             }
         }
+
         @media (max-width:780px) {
             #poem-box {
                 font-size: 5px;
@@ -176,8 +223,12 @@
 
 <body>
     <div class="menubar">
-        <p>옳고 그름의 경계</p>
-        <a href="index.html">홈으로 이동</a>
+        <div class="title-space">
+            <p>옳고 그름의 경계 옳고 그름의 경계 옳고 그름의 경계 옳고 그름의</p>
+        </div>
+        <div class="subtitle-space">
+            <a href="index.html">홈으로 이동</a>
+        </div>
     </div>
     <div class="container">
         <div class="dropzone-house">
@@ -270,6 +321,7 @@
                 <p>사진 찍는 소리가 들린다</p>
             </div>
         </div>
+        <object class="ob" data="images/main_1.gif" type=""></object>
     </div>
     <footer class="footer">
 
@@ -298,26 +350,26 @@
         // addPoemClassNum();
 
         function crash(gap) {
-            var value = gap*60;
-            
+            var value = gap * 60;
+
             console.log(gap);
             var setId = setInterval(() => {
                 leftDropzone.style.transform = `translateY(${value}vh)`;
-            leftFloor.style.transform = `translateY(${value}vh)`;
-            rightDropzone.style.transform = `translateY(${-value}vh)`;
-            rightFloor.style.transform = `translateY(${-value}vh)`;
+                leftFloor.style.transform = `translateY(${value}vh)`;
+                rightDropzone.style.transform = `translateY(${-value}vh)`;
+                rightFloor.style.transform = `translateY(${-value}vh)`;
             }, 100);
 
-            setTimeout(function(){
+            setTimeout(function () {
                 clearInterval(setId);
                 floorMove();
-                alert("균형이 깨졌습니다.")   
-            },700);
-            
+                alert("균형이 깨졌습니다.")
+            }, 700);
+
         }
 
-        function floorMove () { //weight에 따라 이동시키는 함수 
-            var value = (leftWeight - rightWeight)*2;
+        function floorMove() { //weight에 따라 이동시키는 함수 
+            var value = (leftWeight - rightWeight) * 2;
             leftDropzone.style.transform = `translateY(${value}vh)`;
             leftFloor.style.transform = `translateY(${value}vh)`;
             rightDropzone.style.transform = `translateY(${-value}vh)`;
@@ -383,7 +435,7 @@
             // console.log('this is', event.target.id);
 
             if (Math.abs(leftWeight - rightWeight) >= 3) {
-                if (leftWeight > rightWeight) { //만약 왼쪽에서 깨졌을 경우 목적지가 왼쪽이 아닌것 다 가능
+                if (leftWeight > rightWeight) { //만약 왼쪽에서 깨졌을 경우
                     if (prevParentElem.className == "poem-dropzone") {
                         if (nowParentElem.className == "poem-dropzone") {
                             console.log('cant do that');
@@ -434,7 +486,7 @@
                         }
                     }
                 }
-                if (leftWeight < rightWeight) { //만약 오른쪽에서 깨졌을 경우 목적지가 오른쪽이 아닌것 다 가능
+                if (leftWeight < rightWeight) { //만약 오른쪽에서 깨졌을 경우
                     if (prevParentElem.className == "poem-dropzone") {
                         if (nowParentElem.className == "poem-dropzone") {
                             console.log('cant do that');
