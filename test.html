@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/default.css">
     <style>
         body {
+<<<<<<< HEAD
             font-size: 14px;
         }
         video {
@@ -48,10 +48,15 @@
             border: black solid 2px;
             border-collapse:collapse;
             letter-spacing: 3px;
+=======
+            background-color: darkcyan;
+            margin: 0;
+>>>>>>> 738a60392b7718b636b79d306e0dc42eee061815
         }
     </style>
 </head>
 <body>
+<<<<<<< HEAD
     <div class="house">
         <video src="/images/melting1.mp4" autoplay loop muted poster preload="auto"></video>
 
@@ -60,5 +65,144 @@
     </div>
 
     
+=======
+    <canvas id="canvas">
+        Your browser does not support canvas.
+    </canvas>
+<script>
+
+    let quantity = 0;
+    const color = '#86bbd8';
+
+    class Bubble {
+constructor(x, y, vx, vy) {
+    this.x = x;
+    this.y = y;
+    this.vx = vx;
+    this.vy = vy;
+    this.radius = 32;
+    this.sAngle = 0;
+    this.eAngle = Math.PI * 2;
+    this.bounce = -1;
+}
+}
+
+class Bubbles {
+constructor(canvasElement) {
+    this.canvasElement = canvasElement;
+    this.bubbles = [];
+    
+    this.animate = this.animate.bind(this);
+    this.resizeCanvas = this.resizeCanvas.bind(this);
+    this.start = this.start.bind(this);
+    
+    this.setCanvasDimensions();
+    this.context = this.canvasElement.getContext('2d');
+    this.start();
+    
+    window.addEventListener('resize', this.resizeCanvas.bind(this));
+}
+
+resizeCanvas() {
+    window.cancelAnimationFrame(this.animationTimerId);
+    this.setCanvasDimensions();
+    this.restart();
+}
+
+restart() {
+    if(this.waitTimerId) clearTimeout(this.waitTimerId);
+    this.waitTimerId = setTimeout(this.start, 1000);
+}
+
+start() {
+    this.createData();
+    this.animate();
+}
+
+setCanvasDimensions() {
+    if(!this.canvasElement) return;
+    this.canvasWidth = this.canvasElement.width = window.innerWidth;
+    this.canvasHeight = this.canvasElement.height = window.innerHeight;
+}
+
+createData() {
+    for(let i = 0; i < quantity; i++) {
+    this.bubbles[i] = new Bubble(
+        Math.random() * this.canvasWidth,
+        Math.random() * this.canvasHeight,
+        (Math.random()) - 0.5,
+        (Math.random()) - 0.5
+    );
+    }
+}
+
+update() {
+    for(let i = 0; i < quantity; i++) {
+    const bubble = this.bubbles[i];
+    
+    bubble.x += bubble.vx;
+    bubble.y += bubble.vy;
+    
+    if(bubble.x > this.canvasWidth) {
+        bubble.vx *= bubble.bounce;
+    } else if(bubble.x < 0) {
+        bubble.vx *= bubble.bounce;
+    }
+    
+    if(bubble.y > this.canvasHeight) {
+        bubble.vy *= bubble.bounce;
+    } else if(bubble.y < 0) {
+        bubble.vy *= bubble.bounce;
+    }
+    
+    }
+}
+
+draw() {
+    if(!(this.context instanceof CanvasRenderingContext2D)) return;
+    
+    this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+    // this.context.strokeStyle = color;
+    
+    for(let i = 0; i < quantity; i++) {
+    const bubble = this.bubbles[i];
+    this.context.beginPath();
+    
+    this.context.arc(
+        bubble.x,
+        bubble.y,
+        bubble.radius,
+        bubble.sAngle,
+        bubble.eAngle
+    );
+    
+    this.context.drawImage(img, bubble.x, bubble.y);
+    // this.context.stroke();
+    }
+}
+
+animate() {
+    this.animationTimerId = requestAnimationFrame(this.animate);
+    this.update();
+    this.draw();
+}
+
+}
+
+const canvas = document.getElementById('canvas');
+const img = document.createElement('img');
+img.src = 'https://examples.phaser.io/assets/particles/bubble.png';
+
+img.onload = () => {
+new Bubbles(canvas); 
+}
+
+canvas.addEventListener('click', addQuntity)
+
+function addQuntity () {
+    quantity += 1;
+}
+</script>
+>>>>>>> 738a60392b7718b636b79d306e0dc42eee061815
 </body>
 </html>
