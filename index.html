@@ -22,16 +22,18 @@
         }
 
         .container {
+            position: relative;
             width : 100vw;
             height : 100vh;
-            overflow-x: auto;
+            overflow-x: hidden;
             background: black;
         }
         .title {
             z-index: 1;
-            width : 100%;
-            height : 100%;
+            width : 99%;
+            height : 99%;
             pointer-events: none;
+
         }
         .sub-title-1 {
             position: fixed;
@@ -58,10 +60,10 @@
             right: 1.5vw;
         }
         .scroll-icon {
-            position: fixed;
+            position: absolute;
             width: 3vw;
-            bottom: 3vh;
-            left: 0;
+            bottom: 1.5vh;
+            left: 1.1vw;
             right: 0;
             margin: auto;
             animation: scroll-ani 2s infinite;
@@ -94,6 +96,9 @@
             font-size: 2rem;
             font-weight: 200;
         }
+        .headcopy {
+            z-index: 2;
+        }
         .section-3 {
             height: 100vh;
             background: blueviolet;
@@ -110,7 +115,7 @@
                 <a href=""><img class="sub-title-2" src="images/index/human.svg" alt=""></a>
                 <a href=""><img class="sub-title-3" src="images/index/dream.svg" alt=""></a>
                 <a href=""><img class="sub-title-4" src="images/index/death.svg" alt=""></a>
-                <a href=""><img class="scroll-icon" src="images/index/scroll.svg" alt="">
+                <img class="scroll-icon" src="images/index/scroll.svg" alt="">
             </div>
         </div>
         <div class="section-2">
