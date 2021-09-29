@@ -6,203 +6,179 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body {
-<<<<<<< HEAD
-            font-size: 14px;
-        }
-        video {
-            top:0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-        }
-        .house {
-            top: 0px;
-            left : 0;
-            width: 100vw;
-            height: 100vh;
-        }
-        .room-1 {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            width: 50vw;
-            height: 50vh;
-        }
-        .content {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            width: 50vw;
-            height: 50vh;
-            font-size: 4rem;
-            font-weight: 900;
-            color: transparent;
-            text-align: center;
-            border: black solid 2px;
-            border-collapse:collapse;
-            letter-spacing: 3px;
-=======
-            background-color: darkcyan;
-            margin: 0;
->>>>>>> 738a60392b7718b636b79d306e0dc42eee061815
-        }
+        $gunmetal: #4b515d;
+$light-grey-blue: #86bbd8;
+
+body {
+  background-color: $gunmetal;
+  margin: 0;
+}
     </style>
 </head>
 <body>
-<<<<<<< HEAD
-    <div class="house">
-        <video src="/images/melting1.mp4" autoplay loop muted poster preload="auto"></video>
-
-            <p class="content">KDA</p>
-
-    </div>
-
-    
-=======
-    <canvas id="canvas">
-        Your browser does not support canvas.
-    </canvas>
+<canvas id="canvas">
+    Your browser does not support canvas.
+</canvas>
 <script>
+    const quantity = 50;
+        const color = '#86bbd8';
 
-    let quantity = 0;
-    const color = '#86bbd8';
+        class Bubble {
+            constructor(x, y, vx, vy) {
+                this.x = x;
+                this.y = y;
+                this.vx = vx;
+                this.vy = vy;
+                this.radius = 32;
+                this.sAngle = 0;
+                this.eAngle = Math.PI * 2;
+                this.bounce = -1;
+            }
+        }
 
-    class Bubble {
-constructor(x, y, vx, vy) {
-    this.x = x;
-    this.y = y;
-    this.vx = vx;
-    this.vy = vy;
-    this.radius = 32;
-    this.sAngle = 0;
-    this.eAngle = Math.PI * 2;
-    this.bounce = -1;
-}
-}
+        class Bubbles {
+            constructor(canvasElement) {
+                this.canvasElement = canvasElement;
+                this.bubbles = [];
 
-class Bubbles {
-constructor(canvasElement) {
-    this.canvasElement = canvasElement;
-    this.bubbles = [];
-    
-    this.animate = this.animate.bind(this);
-    this.resizeCanvas = this.resizeCanvas.bind(this);
-    this.start = this.start.bind(this);
-    
-    this.setCanvasDimensions();
-    this.context = this.canvasElement.getContext('2d');
-    this.start();
-    
-    window.addEventListener('resize', this.resizeCanvas.bind(this));
-}
+                this.animate = this.animate.bind(this);
+                this.resizeCanvas = this.resizeCanvas.bind(this);
+                this.start = this.start.bind(this);
 
-resizeCanvas() {
-    window.cancelAnimationFrame(this.animationTimerId);
-    this.setCanvasDimensions();
-    this.restart();
-}
+                this.setCanvasDimensions();
+                this.context = this.canvasElement.getContext('2d');
+                this.start();
 
-restart() {
-    if(this.waitTimerId) clearTimeout(this.waitTimerId);
-    this.waitTimerId = setTimeout(this.start, 1000);
-}
+                window.addEventListener('resize', this.resizeCanvas.bind(this));
+            }
 
-start() {
-    this.createData();
-    this.animate();
-}
+            resizeCanvas() {
+                window.cancelAnimationFrame(this.animationTimerId);
+                this.setCanvasDimensions();
+                this.restart();
+            }
 
-setCanvasDimensions() {
-    if(!this.canvasElement) return;
-    this.canvasWidth = this.canvasElement.width = window.innerWidth;
-    this.canvasHeight = this.canvasElement.height = window.innerHeight;
-}
+            restart() {
+                if (this.waitTimerId) clearTimeout(this.waitTimerId);
+                this.waitTimerId = setTimeout(this.start, 1000);
+            }
 
-createData() {
-    for(let i = 0; i < quantity; i++) {
-    this.bubbles[i] = new Bubble(
-        Math.random() * this.canvasWidth,
-        Math.random() * this.canvasHeight,
-        (Math.random()) - 0.5,
-        (Math.random()) - 0.5
-    );
-    }
-}
+            start() {
+                this.createData();
+                this.animate();
+            }
 
-update() {
-    for(let i = 0; i < quantity; i++) {
-    const bubble = this.bubbles[i];
-    
-    bubble.x += bubble.vx;
-    bubble.y += bubble.vy;
-    
-    if(bubble.x > this.canvasWidth) {
-        bubble.vx *= bubble.bounce;
-    } else if(bubble.x < 0) {
-        bubble.vx *= bubble.bounce;
-    }
-    
-    if(bubble.y > this.canvasHeight) {
-        bubble.vy *= bubble.bounce;
-    } else if(bubble.y < 0) {
-        bubble.vy *= bubble.bounce;
-    }
-    
-    }
-}
+            setCanvasDimensions() {
+                if (!this.canvasElement) return;
+                this.canvasWidth = this.canvasElement.width = window.innerWidth;
+                this.canvasHeight = this.canvasElement.height = window.innerHeight;
+            }
 
-draw() {
-    if(!(this.context instanceof CanvasRenderingContext2D)) return;
-    
-    this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-    // this.context.strokeStyle = color;
-    
-    for(let i = 0; i < quantity; i++) {
-    const bubble = this.bubbles[i];
-    this.context.beginPath();
-    
-    this.context.arc(
-        bubble.x,
-        bubble.y,
-        bubble.radius,
-        bubble.sAngle,
-        bubble.eAngle
-    );
-    
-    this.context.drawImage(img, bubble.x, bubble.y);
-    // this.context.stroke();
-    }
-}
+            createData() {
+                for (let i = 0; i < quantity; i++) {
+                    this.bubbles[i] = new Bubble(
+                        Math.random() * this.canvasWidth,
+                        Math.random() * this.canvasHeight,
+                        (Math.random()) - 0.5,
+                        (Math.random()) - 0.5
+                    );
+                }
+            }
 
-animate() {
-    this.animationTimerId = requestAnimationFrame(this.animate);
-    this.update();
-    this.draw();
-}
 
-}
+            update() {
+                for (let i = 0; i < this.bubbles.length; i++) {
+                    const bubble = this.bubbles[i];
 
-const canvas = document.getElementById('canvas');
-const img = document.createElement('img');
-img.src = 'https://examples.phaser.io/assets/particles/bubble.png';
+                    bubble.x += bubble.vx;
+                    bubble.y += bubble.vy;
 
-img.onload = () => {
-new Bubbles(canvas); 
-}
+                    if (bubble.x > this.canvasWidth) {
+                        bubble.vx *= bubble.bounce;
+                    } else if (bubble.x < 0) {
+                        bubble.vx *= bubble.bounce;
+                    }
 
-canvas.addEventListener('click', addQuntity)
+                    if (bubble.y > this.canvasHeight) {
+                        bubble.vy *= bubble.bounce;
+                    } else if (bubble.y < 0) {
+                        bubble.vy *= bubble.bounce;
+                    }
+                    //충돌 검사 부분
+                    for (let j = 0; j < this.bubbles.length; j++) {
+                        if (i != j) {
+                            //충돌 검사를 위해 중심점 알아오기
+                            const center1x = this.bubbles[i].x + this.bubbles[i].radius;
+                            const center1y = this.bubbles[i].y + this.bubbles[i].radius;
 
-function addQuntity () {
-    quantity += 1;
-}
+                            const center2x = this.bubbles[j].x + this.bubbles[j].radius;
+                            const center2y = this.bubbles[j].y + this.bubbles[j].radius;
+
+                            //두점사이의 거리 계산
+                            if (((center1x - center2x) * (center1x - center2x) +
+                                (center1y - center2y) * (center1y - center2y)) < (64 * 64)) {
+                                if (i > j)//삭제할 위치가 높은 위치 부터 삭제
+                                {
+                                    this.bubbles.splice(i, 1);
+                                    this.bubbles.splice(j, 1);
+                                } else {
+                                    this.bubbles.splice(j, 1);
+                                    this.bubbles.splice(i, 1);
+                                }
+                            }
+
+                        }
+                    }
+
+                }
+            }
+
+            draw() {
+                if (!(this.context instanceof CanvasRenderingContext2D))
+                    return;
+
+                this.context.clearRect(
+                    0,
+                    0,
+                    this.canvasWidth,
+                    this.canvasHeight
+                );
+                // this.context.strokeStyle = color;
+
+                for (let i = 0; i < this.bubbles.length; i++) {//배열 크기 만큼 반복
+                    const bubble = this.bubbles[i];
+                    this.context.beginPath();
+
+                    this.context.arc(
+                        bubble.x,
+                        bubble.y,
+                        bubble.radius,
+                        bubble.sAngle,
+                        bubble.eAngle
+                    );
+
+                    this.context.drawImage(img, bubble.x, bubble.y);
+                    //this.context.stroke();
+                }
+            }
+
+
+            animate() {
+                this.animationTimerId = requestAnimationFrame(this.animate);
+                this.update();
+                this.draw();
+            }
+
+        }
+
+        const canvas = document.getElementById('canvas');
+        const img = document.createElement('img');
+        img.src = 'https://examples.phaser.io/assets/particles/bubble.png';
+
+        img.onload = () => {
+            new Bubbles(canvas);
+        }
+
 </script>
->>>>>>> 738a60392b7718b636b79d306e0dc42eee061815
 </body>
 </html>

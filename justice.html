@@ -98,7 +98,8 @@
             user-select: none;
             width: 20vw;
             height: 85vh;
-            background-color: transparent;
+            background-image: url(images/nemo.png);
+            background-size: 100% 100%;
             color: #df00ff;
             font-size: 1.2rem;
             line-height: 0.6rem;
@@ -115,10 +116,11 @@
             justify-content: center;
             width: 80vw;
             height: 85vh;
-            background-image: url(images/3dspace.png);
+            /* background-image: url(images/3dspace.png); */
             background-size: 80vw 85vh;
             color: white;
             font-size: 1.2rem;
+            
         }
 
         .left-house {
@@ -128,6 +130,7 @@
             background: rgba(0, 0, 0, 0);
             width: 40vw;
             height: 85vh;
+            transform : translate3d(0,1vh,0);
         }
 
         .right-house {
@@ -137,11 +140,13 @@
             background: rgba(0, 0, 0, 0);
             width: 40vw;
             height: 85vh;
+            transform : translate3d(0,1vh,0);
         }
 
         .left-dropzone {
+            margin-left: -4vw;
+            margin-top: -1.6vh;
             position: absolute;
-            top: 10vh;
             -ms-user-select: none;
             -moz-user-select: -moz-none;
             -webkit-user-select: none;
@@ -154,11 +159,13 @@
             flex-direction: column-reverse;
             align-items: center;
             transition: 2s;
+                        transform: translate3d(-2vw,0,0);
         }
 
         .right-dropzone {
+            margin-left: 4vw;
+            margin-top: -1.6vh;
             position: absolute;
-            top: 10vh;
             -ms-user-select: none;
             -moz-user-select: -moz-none;
             -webkit-user-select: none;
@@ -171,14 +178,15 @@
             flex-direction: column-reverse;
             align-items: center;
             transition: 2s;
+            transform: translate3d(2vw,0,0);
         }
 
-        .left-floor {
+        /* .left-floor {
             position: absolute;
             top: 70vh;
             width: 20vw;
             height: 10vh;
-            /* border: #df00ff 2px solid; */
+            border: #df00ff 2px solid;
             background: transparent;
             border-radius: 0 0 50% 50%;
             transition: 2s;
@@ -189,9 +197,36 @@
             top: 70vh;
             width: 20vw;
             height: 10vh;
-            /* border: #df00ff 2px solid; */
+            border: #df00ff 2px solid;
             border-radius: 0 0 50% 50%;
             transition: 2s;
+        } */
+        .left-img {
+            width: auto;
+            height: 60vh;
+            transform: translate3d(-4vw,8.9vh,0);
+            user-select: none;
+            pointer-events: none;
+            transition: 2s;
+        }
+        .right-img {
+            width: auto;
+            height: 60vh;
+            transform: translate3d(4vw,8.9vh,0);
+            user-select: none;
+            pointer-events: none;
+            transition: 2s;
+        }
+        .bar {
+            width: 57vw;
+            position: absolute;
+            transform-origin: 50% 50%;
+            transform: translate3d(0,8.9vh,0) rotate(0deg);
+            transition: 2s;
+        }
+        .ggdae {
+            position: absolute;
+            transform: translate3d(0,3vh,0);
         }
 
         .dropzone-house #draggable {
@@ -215,7 +250,7 @@
 <body>
     <div class="menubar">
         <div class="title-space">
-            <p>옳고 그름의 경계 옳고 그름의 경계 옳고 그름의 경계 옳고 그름의</p>
+            <p>옳고 그름의 경계 옳고 그름의 경계 옳고 그름의 경계 옳고</p>
         </div>
         <div class="subtitle-space">
             <a href="index.html">홈으로 이동</a>
@@ -223,13 +258,17 @@
     </div>
     <div class="container">
         <div class="dropzone-house">
+            <img  class="bar"src="images/bar.png" alt="">
+            <div class="ggdae"><img src="images/ggdae.png" alt=""></div>
             <div class="left-house">
                 <div class="left-dropzone" id="left-field"></div>
-                <div class="left-floor"></div>
+                <!-- <div class="left-floor"></div> -->
+                <img class="left-img" src="images/left.png" alt="">
             </div>
             <div class="right-house">
                 <div class="right-dropzone" id="right-field"></div>
-                <div class="right-floor"></div>
+                <!-- <div class="right-floor"></div> -->
+                <img class="right-img" src="images/right.png" alt="">
             </div>
         </div>
         <div class="poem-dropzone" id="poem-box">
@@ -312,7 +351,7 @@
                 <p>사진 찍는 소리가 들린다</p>
             </div>
         </div>
-        <object class="ob" data="images/main_1.gif" type=""></object>
+        <!-- <object class="ob" data="images/main_1.gif" type=""></object> -->
     </div>
     <footer class="footer">
 
@@ -331,6 +370,9 @@
         var rightDropzone = document.querySelector('.right-dropzone');
         var leftFloor = document.querySelector('.left-floor');
         var rightFloor = document.querySelector('.right-floor');
+        var leftImg = document.querySelector('.left-img');
+        var rightImg = document.querySelector('.right-img');
+        var bar = document.querySelector('.bar');
 
         // function addPoemClassNum() {
         //     for (var i = 0; i < poemElem.length; i++) {
@@ -345,10 +387,17 @@
 
             console.log(gap);
             var setId = setInterval(() => {
-                leftDropzone.style.transform = `translateY(${value}vh)`;
-                leftFloor.style.transform = `translateY(${value}vh)`;
-                rightDropzone.style.transform = `translateY(${-value}vh)`;
-                rightFloor.style.transform = `translateY(${-value}vh)`;
+                leftDropzone.style.transform = `translate3D(-2vw, ${value}vh, 0)`;
+                // leftFloor.style.transform = `translateY(${value}vh)`;
+                rightDropzone.style.transform = `translate3D(2vw, ${-value}vh, 0)`;
+                // rightFloor.style.transform = `translateY(${-value}vh)`;
+                leftImg.style.transform = `translate3D(-4vw, ${8.9 + value}vh, 0)`;
+                rightImg.style.transform = `translate3D(4vw, ${8.9-value}vh, 0)`;
+                if (value > 0) {
+                    bar.style.transform = `translate3d(0, ${8.9 + value/2}vh, 0) rotate(${-value}deg)`;
+                } else {
+                    bar.style.transform = `translate3d(0, ${8.9 - value/2}vh, 0) rotate(${-value}deg)`;
+                }
             }, 100);
 
             setTimeout(function () {
@@ -361,10 +410,14 @@
 
         function floorMove() { //weight에 따라 이동시키는 함수 
             var value = (leftWeight - rightWeight) * 2;
-            leftDropzone.style.transform = `translateY(${value}vh)`;
-            leftFloor.style.transform = `translateY(${value}vh)`;
-            rightDropzone.style.transform = `translateY(${-value}vh)`;
-            rightFloor.style.transform = `translateY(${-value}vh)`;
+            var value2 = (value * 2.3)/2
+            leftDropzone.style.transform = `translate3D(-2vw, ${value}vh, 0)`;
+            // leftFloor.style.transform = `translateY(${value}vh)`;
+            rightDropzone.style.transform = `translate3D(2vw, ${-value}vh, 0)`;
+            // rightFloor.style.transform = `translateY(${-value}vh)`;
+            leftImg.style.transform = `translate3D(-4vw, ${8.9 + value}vh, 0)`;
+            rightImg.style.transform = `translate3D(4vw, ${8.9 - value}vh, 0)`;
+            bar.style.transform = `translate3d(0, 8.9vh, 0) rotate(${-value2}deg)`;
         }
 
 
