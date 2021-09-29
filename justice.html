@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/default.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
     </style>
     <style>
         /* .no-drag {-ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;} */
@@ -16,72 +17,54 @@
             width: 100vw;
             height: 100vh;
             overflow: hidden;
+            font-family:'Noto Sans KR', sans-serif;
         }
-        .ob {
-            position: absolute;
-            top: 8vh;
-            left: 9vw;
-            width: 90vw;
-            height: auto;
-            background: transparent;
-            user-select: none;
-            pointer-events: none;
-        }
-
-        .menubar {
-            display: flex;
-            width: 100vw;
-            height: 7.5vh;
+        header, footer {
+            height: 2.5vh;
             background: black;
-            border-bottom: 2px solid #df00ff;
-        }
-
-        .title-space {
-            display: flex;
-            padding-left: 1vw;
-            align-items: center;
-            width: 80vw;
-            height: 7.5vh;
-            font-size: 3.5rem;
-            font-weight: 900;
-            background: #df00ff;
-            color: black;
-        }
-
-        .subtitle-space {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 20vw;
-            height: 7.5vh;
-            font-size: 2rem;
-            font-weight: 900;
-            background: transparent;
-            border: #df00ff solid 3px;
-            color: black;
-        }
-
-        .menubar a {
-            text-decoration: none;
-            color: white;
-        }
-
-        .footer {
-            width: 100vw;
-            height: 7.5vh;
-            background: black;
-            border-top: 2px solid #df00ff;
         }
 
         .container {
             top: 0;
             left: 0;
             width: 100vw;
-            height: 85vh;
+            height: 95vh;
             display: flex;
             flex-direction: row;
             align-items: center;
             background-color: black;
+        }
+        .dropzone-house {
+            user-select: none;
+            display: flex;
+            justify-content: center;
+            width: 70vw;
+            height: 90vh;
+            background-size: 80vw 85vh;
+            color: #ff2727;
+            font-size: 1.2rem;  
+        }
+            #poem-box {
+            /* font-family: 'Hahmlet', serif; */
+            font-weight: 300;
+            padding-top: 5vh;
+            user-select: none;
+            width: 25vw;
+            height: 90vh;
+            background-size: 100% 100%;
+            color: #ff2727;
+            font-size: 1.2rem;
+            line-height: 0.6rem;
+            border-left: 0.75px solid #ff2727;
+        }
+
+        .side-space {
+            width: 5vw;
+        }
+        .side-bar {
+            transform: translate3d(2.5vw,0,0);
+            height: 70vh;
+            transition: 1s;
         }
 
         #draggable {
@@ -91,37 +74,12 @@
             background: transparent;
         }
 
-        #poem-box {
-            font-family: 'Hahmlet', serif;
-            font-weight: 700;
-            padding-top: 5vh;
-            user-select: none;
-            width: 20vw;
-            height: 85vh;
-            background-image: url(images/nemo.png);
-            background-size: 100% 100%;
-            color: #df00ff;
-            font-size: 1.2rem;
-            line-height: 0.6rem;
-            border-left: 2px solid #df00ff;
-        }
 
         .dropzone-house #draggable {
-            height: 3.2vh;
+            margin-top: -5px;
         }
 
-        .dropzone-house {
-            user-select: none;
-            display: flex;
-            justify-content: center;
-            width: 80vw;
-            height: 85vh;
-            /* background-image: url(images/3dspace.png); */
-            background-size: 80vw 85vh;
-            color: white;
-            font-size: 1.2rem;
-            
-        }
+
 
         .left-house {
             display: flex;
@@ -129,7 +87,7 @@
             align-items: center;
             background: rgba(0, 0, 0, 0);
             width: 40vw;
-            height: 85vh;
+            height: 90vh;
             transform : translate3d(0,1vh,0);
         }
 
@@ -139,46 +97,38 @@
             align-items: center;
             background: rgba(0, 0, 0, 0);
             width: 40vw;
-            height: 85vh;
+            height: 90vh;
             transform : translate3d(0,1vh,0);
         }
 
         .left-dropzone {
-            margin-left: -4vw;
-            margin-top: -1.6vh;
+            margin-left: -12vw;
+            margin-top: -6.6vh;
             position: absolute;
-            -ms-user-select: none;
-            -moz-user-select: -moz-none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
             user-select: none;
             width: 20vw;
-            height: 65vh;
+            height: 70vh;
             background: transparent;
             display: flex;
             flex-direction: column-reverse;
             align-items: center;
             transition: 2s;
-                        transform: translate3d(-2vw,0,0);
+            padding-bottom: 7px;
         }
 
         .right-dropzone {
-            margin-left: 4vw;
-            margin-top: -1.6vh;
+            margin-left: 12vw;
+            margin-top: -6.6vh;
             position: absolute;
-            -ms-user-select: none;
-            -moz-user-select: -moz-none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
             user-select: none;
             width: 20vw;
-            height: 65vh;
+            height: 70vh;
             background: transparent;
             display: flex;
             flex-direction: column-reverse;
             align-items: center;
             transition: 2s;
-            transform: translate3d(2vw,0,0);
+            padding-bottom: 7px;
         }
 
         /* .left-floor {
@@ -204,7 +154,7 @@
         .left-img {
             width: auto;
             height: 60vh;
-            transform: translate3d(-4vw,8.9vh,0);
+            transform: translate3d(-6vw,8.9vh,0);
             user-select: none;
             pointer-events: none;
             transition: 2s;
@@ -212,7 +162,7 @@
         .right-img {
             width: auto;
             height: 60vh;
-            transform: translate3d(4vw,8.9vh,0);
+            transform: translate3d(6vw,8.9vh,0);
             user-select: none;
             pointer-events: none;
             transition: 2s;
@@ -227,6 +177,9 @@
         .ggdae {
             position: absolute;
             transform: translate3d(0,3vh,0);
+        }
+        .ggdae-img {
+            width: 20vw;
         }
 
         .dropzone-house #draggable {
@@ -248,27 +201,20 @@
 </head>
 
 <body>
-    <div class="menubar">
-        <!-- <div class="title-space">
-            <p>옳고 그름의 경계 옳고 그름의 경계 옳고 그름의 경계 옳고</p>
-        </div>
-        <div class="subtitle-space">
-            <a href="index.html">홈으로 이동</a>
-        </div> -->
-    </div>
+    <header></header>
     <div class="container">
         <div class="dropzone-house">
-            <img  class="bar"src="images/bar.png" alt="">
-            <div class="ggdae"><img src="images/ggdae.png" alt=""></div>
+            <img  class="bar"src="images/justice/bar.svg" alt="">
+            <div class="ggdae"><img class="ggdae-img" src="images/justice/ggdae.svg" alt=""></div>
             <div class="left-house">
                 <div class="left-dropzone" id="left-field"></div>
                 <!-- <div class="left-floor"></div> -->
-                <img class="left-img" src="images/left.png" alt="">
+                <img class="left-img" src="images/justice/left.svg" alt="">
             </div>
             <div class="right-house">
                 <div class="right-dropzone" id="right-field"></div>
                 <!-- <div class="right-floor"></div> -->
-                <img class="right-img" src="images/right.png" alt="">
+                <img class="right-img" src="images/justice/right.svg" alt="">
             </div>
         </div>
         <div class="poem-dropzone" id="poem-box">
@@ -352,10 +298,13 @@
             </div>
         </div>
         <!-- <object class="ob" data="images/main_1.gif" type=""></object> -->
+        <div class="side-space">
+            <div class="sidebarhouse">
+            <img class="side-bar" src="images/justice/sidebar.svg" alt="">
+            </div>
+        </div>
     </div>
-    <footer class="footer">
-
-    </footer>
+    <footer></footer>
 
     <script>
         var dragged;
@@ -373,6 +322,8 @@
         var leftImg = document.querySelector('.left-img');
         var rightImg = document.querySelector('.right-img');
         var bar = document.querySelector('.bar');
+        var sideBar = document.querySelector('.side-bar');
+        var sideBarHouse = document.querySelector('.sidebarhouse');
 
         // function addPoemClassNum() {
         //     for (var i = 0; i < poemElem.length; i++) {
@@ -387,12 +338,12 @@
 
             console.log(gap);
             var setId = setInterval(() => {
-                leftDropzone.style.transform = `translate3D(-2vw, ${value}vh, 0)`;
+                leftDropzone.style.transform = `translate3D(0, ${value}vh, 0)`;
                 // leftFloor.style.transform = `translateY(${value}vh)`;
-                rightDropzone.style.transform = `translate3D(2vw, ${-value}vh, 0)`;
+                rightDropzone.style.transform = `translate3D(0, ${-value}vh, 0)`;
                 // rightFloor.style.transform = `translateY(${-value}vh)`;
-                leftImg.style.transform = `translate3D(-4vw, ${8.9 + value}vh, 0)`;
-                rightImg.style.transform = `translate3D(4vw, ${8.9-value}vh, 0)`;
+                leftImg.style.transform = `translate3D(-6vw, ${8.9 + value}vh, 0)`;
+                rightImg.style.transform = `translate3D(6vw, ${8.9-value}vh, 0)`;
                 if (value > 0) {
                     bar.style.transform = `translate3d(0, ${8.9 + value/2}vh, 0) rotate(${-value}deg)`;
                 } else {
@@ -411,12 +362,12 @@
         function floorMove() { //weight에 따라 이동시키는 함수 
             var value = (leftWeight - rightWeight) * 2;
             var value2 = (value * 2.3)/2
-            leftDropzone.style.transform = `translate3D(-2vw, ${value}vh, 0)`;
+            leftDropzone.style.transform = `translate3D(0, ${value}vh, 0)`;
             // leftFloor.style.transform = `translateY(${value}vh)`;
-            rightDropzone.style.transform = `translate3D(2vw, ${-value}vh, 0)`;
+            rightDropzone.style.transform = `translate3D(0, ${-value}vh, 0)`;
             // rightFloor.style.transform = `translateY(${-value}vh)`;
-            leftImg.style.transform = `translate3D(-4vw, ${8.9 + value}vh, 0)`;
-            rightImg.style.transform = `translate3D(4vw, ${8.9 - value}vh, 0)`;
+            leftImg.style.transform = `translate3D(-6vw, ${8.9 + value}vh, 0)`;
+            rightImg.style.transform = `translate3D(6vw, ${8.9 - value}vh, 0)`;
             bar.style.transform = `translate3d(0, 8.9vh, 0) rotate(${-value2}deg)`;
         }
 
@@ -644,6 +595,16 @@
             }
             floorMove();
         }, false);
+
+        sideBarHouse.addEventListener('mouseover', () => {
+            sideBar.style.transform = `translate3d(${2.5-2.5}vw,0,0)`;
+            console.log('dfdfd');
+        })
+        sideBarHouse.addEventListener('mouseout', () => {
+                sideBar.style.transform = `translate3d(${2.5}vw,0,0)`;
+                console.log('516516516');
+            })
+
     </script>
 </body>
 
