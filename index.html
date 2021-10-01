@@ -10,6 +10,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
     </style>
     <style>
+
+
+        body {
+            overflow-x: hidden;
+        }
+
         @keyframes scroll-ani {
             50% {
                 transform: translate3d(0,-1.5vh,0);    
@@ -20,56 +26,69 @@
             }
             
         }
+        @keyframes remove-scroll-icon-ani {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .remove-scroll-icon-ani {
+            animation: remove-scroll-icon-ani 3s;
+            opacity: 0;
+            transition: 0.5s;
+        }
 
         .container {
             position: relative;
             width : 100vw;
             height : 100vh;
-            overflow-x: hidden;
             background: black;
         }
         .title {
-            z-index: 1;
-            width : 99%;
-            height : 99%;
+            z-index: 0;
+            width : 100%;
+            height : 100%;
             pointer-events: none;
 
         }
         .sub-title-1 {
             position: fixed;
             width: 12vw;
-            top: 3vh;
+            top: 7vh;
             left: 1.5vw;
         }
         .sub-title-2 {
             position: fixed;
             width: 12vw;
-            top: 3vh;
+            top: 7vh;
             right : 1.5vw;
         }
         .sub-title-3 {
             position: fixed;
             width: 12vw;
-            bottom: 3vh;
+            bottom: 7vh;
             left: 1.5vw;
         }
         .sub-title-4 {
             position: fixed;
             width: 12vw;
-            bottom: 3vh;
+            bottom: 7vh;
             right: 1.5vw;
         }
         .scroll-icon {
             position: absolute;
             width: 3vw;
             bottom: 1.5vh;
-            left: 1.1vw;
+            left: 2.7vw;
             right: 0;
             margin: auto;
             animation: scroll-ani 2s infinite;
         }
         .map-img {
-            position: absolute;
+            position: fixed;
             width: 75vw;
             height: 75vh;
             pointer-events: none;
@@ -89,19 +108,59 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 100vw;
             height: 100vh;
-            background: blue;
-            color: chartreuse;
-            font-family:'Noto Sans KR', sans-serif;
-            font-size: 2rem;
-            font-weight: 200;
+            background: black;
         }
-        .headcopy {
+        .headcopy-house {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             z-index: 2;
+            width: 40vw;
+            height: 55vh;
+            background: transparent;
         }
+        .headcopy {        
+            color: white;
+            
+            font-family:'Noto Sans KR', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 300;
+            line-height: 2.5rem;
+            /* transform: translate3d(0,0vh,0);
+            transition: 1s;
+            opacity:1; */
+        }
+        /* .headcopy .up {
+            transform: translate3d(0,0vh,0);
+            transition: 1s;
+            opacity: 1;
+        } */
         .section-3 {
             height: 100vh;
-            background: blueviolet;
+            background: black;
+        }
+
+        @media (max-width:1400px) {
+            .scroll-icon {
+            position: absolute;
+            width: 3vw;
+            bottom: 1.5vh;
+            left: 0vw;
+            right: 0;
+            margin: auto;
+            animation: scroll-ani 2s infinite;
+        }
+        .headcopy {        
+            color: white;
+            z-index: 2;
+            font-family:'Noto Sans KR', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: 1.7rem;
+
+        }
         }
     </style>
 </head>
@@ -119,21 +178,21 @@
             </div>
         </div>
         <div class="section-2">
-            <div class="headcopy">
-                이것은 당신과 나의 이야기 <br>
-                과거와 미래, 가상과 현실이 뒤섞인 세계<br>
-                <br>
-                우리는 함께 아슬아슬한 경계 위에 발을 디뎠고<br>
-                맞잡은 손에 어둠이 투영될 만큼<br>
-                우리 자신이 희미해질 때쯤<br>
-                <br>
-                당신이 천천히 입을 벌리기 시작했다<br>
-
-            </div>
-        </div>
-        <div class="section-3">
-        
+            <div class="headcopy-house">
+                <div class="headcopy">
+                    이것은 당신과 나의 이야기 <br>
+                    과거와 미래, 가상과 현실이 뒤섞인 세계<br>
+                    <br>
+                    우리는 함께 아슬아슬한 경계 위에 발을 디뎠고<br>
+                    맞잡은 손에 어둠이 투영될 만큼<br>
+                    우리 자신이 희미해질 때쯤<br>
+                    <br>
+                    당신이 천천히 입을 벌리기 시작했다<br>
+                </div>
+            </div>  
         </div>
     </div>
+    <script src="js/indexscroll.js"> 
+    </script>
 </body>
 </html>

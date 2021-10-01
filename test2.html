@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/default.css">
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        .section-1 {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            background-color: blue;
+            justify-content: center;
+            align-items: center;
+        }
+        .copy1 {
+            position: fixed;
+            width: 50vw;
+            height: 50vh;
+            background: chocolate;
+        }
+        .section-2 {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            background-color: blueviolet;
+            justify-content: center;
+            align-items: center;
+        }
+        .copy2 {
+            top: 0;
+            left: 0;
+            position: fixed;
+            width: 50vw;
+            height: 50vh;
+            background: chartreuse;
+            transform: translate3d(24vw,125vh,0);
+            display:block;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="section-1">
+        <div class="copy1">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque sint, explicabo quo ad, aspernatur facilis placeat consequatur iste numquam repellendus totam minima suscipit quaerat dolore magnam aliquam voluptates iure maxime natus. Voluptatum laudantium eum dolores velit error sunt qui mollitia, esse omnis vel distinctio id voluptatibus expedita quo quae alias.
+        </div>
+    </div>
+    <div class="section-2">
+        <div class="copy2">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat veniam error quod eveniet, ratione temporibus voluptates nisi delectus deleniti esse dicta blanditiis? Odit, quia. Quae quos enim asperiores id itaque!
+        </div>
+    </div>
+
+    <script>
+        const copy2 = document.querySelector('.copy2');
+        let yOffset = 0;
+
+        window.addEventListener('scroll', () => {
+            yOffset = window.pageYOffset
+            
+            if (yOffset > 100) {
+                copy2.style.transform = `translate3d(24vw,${25}vh,0)`;
+            }
+        })
+    </script>
+</body>
+</html>
