@@ -26,6 +26,38 @@
             background: black;
         }
 
+        /* @keyframes up-down-left {
+            0% {
+                transform : translate3d(-6vw,6vh,0);
+            }
+            60% {
+                transform : translate3d(-6vw,-40vh,0);
+            }
+            100% {
+                transform : translate3d(-6vw,30vh,0);
+            }
+        }
+        @keyframes up-down-right {
+            0% {
+                transform : translate3d(6vw,-6vh,0);
+            }
+            60% {
+                transform : translate3d(6vw,-40vh,0);
+            }
+            100% {
+                transform : translate3d(6vw,30vh,0);
+            }
+        } */
+        
+        .up-down-ani-left {
+            animation: up-down-left 1.5s;
+
+        }
+        .up-down-ani-right {
+            animation: up-down-right 1.5s;
+
+        }
+
         .container {
             top: 0;
             left: 0;
@@ -476,19 +508,19 @@
 
         function crash(gap) {
             var value = gap * 60;
-
-            console.log(gap);
             var setId = setInterval(() => {
                 leftDropzone.style.transform = `translate3D(0, ${value}vh, 0)`;
                 // leftFloor.style.transform = `translateY(${value}vh)`;
                 rightDropzone.style.transform = `translate3D(0, ${-value}vh, 0)`;
                 // rightFloor.style.transform = `translateY(${-value}vh)`;
                 leftImg.style.transform = `translate3D(-6vw, ${8.9 + value}vh, 0)`;
-                rightImg.style.transform = `translate3D(6vw, ${8.9-value}vh, 0)`;
+                rightImg.style.transform = `translate3D(6vw, ${8.9 - value}vh, 0)`;
                 if (value > 0) {
-                    bar.style.transform = `translate3d(0, ${8.9 + value/2}vh, 0) rotate(${-value}deg)`;
+                    // rightImg.classList.add('up-down-ani-right');
+                    bar.style.transform = `translate3d(0, 8.9vh, 0) rotate(${-value *2 }deg)`;
                 } else {
-                    bar.style.transform = `translate3d(0, ${8.9 - value/2}vh, 0) rotate(${-value}deg)`;
+                    // leftImg.classList.add('up-down-ani-left');
+                    bar.style.transform = `translate3d(0, 8.9vh, 0) rotate(${-value * 2}deg)`;
                 }
             }, 100);
 
@@ -496,6 +528,8 @@
                 clearInterval(setId);
                 floorMove();
                 alert("균형이 깨졌습니다.")
+                rightImg.classList.remove('up-down-ani-right');
+                leftImg.classList.remove('up-down-ani-left');
             }, 700);
 
         }

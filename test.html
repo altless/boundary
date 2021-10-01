@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        $gunmetal: #4b515d;
-$light-grey-blue: #86bbd8;
-
-body {
-  background-color: $gunmetal;
-  margin: 0;
-}
+        body {
+        margin: 0;
+        }
+        .containger {
+            height: 500vh;
+        }
     </style>
 </head>
 <body>
-<canvas id="canvas">
-    Your browser does not support canvas.
-</canvas>
+    <div class="container">
+    <canvas id="canvas">
+        Your browser does not support canvas.
+    </canvas>
+    </div>
 <script>
     const quantity = 50;
         const color = '#86bbd8';
@@ -179,6 +180,10 @@ body {
             new Bubbles(canvas);
         }
 
+        window.addEventListener('scroll', () => {
+            console.log(window.pageYOffset);
+        });
+        
 </script>
 </body>
 </html>

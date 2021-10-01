@@ -10,6 +10,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
     </style>
     <style>
+
+
+        body {
+            overflow-x: hidden;
+        }
+
         @keyframes scroll-ani {
             50% {
                 transform: translate3d(0,-1.5vh,0);    
@@ -20,56 +26,69 @@
             }
             
         }
+        @keyframes remove-scroll-icon-ani {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .remove-scroll-icon-ani {
+            animation: remove-scroll-icon-ani 3s;
+            opacity: 0;
+            transition: 0.5s;
+        }
 
         .container {
             position: relative;
             width : 100vw;
             height : 100vh;
-            overflow-x: hidden;
             background: black;
         }
         .title {
-            z-index: 1;
-            width : 99%;
-            height : 99%;
+            z-index: 0;
+            width : 100%;
+            height : 100%;
             pointer-events: none;
 
         }
         .sub-title-1 {
             position: fixed;
             width: 12vw;
-            top: 3vh;
+            top: 7vh;
             left: 1.5vw;
         }
         .sub-title-2 {
             position: fixed;
             width: 12vw;
-            top: 3vh;
+            top: 7vh;
             right : 1.5vw;
         }
         .sub-title-3 {
             position: fixed;
             width: 12vw;
-            bottom: 3vh;
+            bottom: 7vh;
             left: 1.5vw;
         }
         .sub-title-4 {
             position: fixed;
             width: 12vw;
-            bottom: 3vh;
+            bottom: 7vh;
             right: 1.5vw;
         }
         .scroll-icon {
             position: absolute;
             width: 3vw;
             bottom: 1.5vh;
-            left: 1.1vw;
+            left: 2.7vw;
             right: 0;
             margin: auto;
             animation: scroll-ani 2s infinite;
         }
         .map-img {
-            position: absolute;
+            position: fixed;
             width: 75vw;
             height: 75vh;
             pointer-events: none;
@@ -89,19 +108,30 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 100vw;
             height: 100vh;
-            background: blue;
+            background: black;
+
+        }
+        .headcopy {        
             color: chartreuse;
-            font-family:'Noto Sans KR', sans-serif;
-            font-size: 2rem;
-            font-weight: 200;
-        }
-        .headcopy {
             z-index: 2;
+            font-family:'Noto Sans KR', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 300;
+            line-height: 2.5rem;
+            /* transform: translate3d(0,0vh,0);
+            transition: 1s;
+            opacity:1; */
         }
+        /* .headcopy .up {
+            transform: translate3d(0,0vh,0);
+            transition: 1s;
+            opacity: 1;
+        } */
         .section-3 {
             height: 100vh;
-            background: blueviolet;
+            background: black;
         }
     </style>
 </head>
@@ -128,12 +158,13 @@
                 우리 자신이 희미해질 때쯤<br>
                 <br>
                 당신이 천천히 입을 벌리기 시작했다<br>
-
             </div>
         </div>
-        <div class="section-3">
-        
-        </div>
+        <!-- <div class="section-3">
+        </div> -->
     </div>
+    
+    <script src="js/indexscroll.js"> 
+    </script>
 </body>
 </html>
