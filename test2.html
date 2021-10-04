@@ -38,8 +38,9 @@
             position: fixed;
             width: 50vw;
             height: 50vh;
-            background: chartreuse;
-            transform: translate3d(24vw,125vh,0);
+            background: transparent;
+            border: tomato 3px solid;
+            transform: translate3d(25vw,125vh,0);
             display:block;
             transition: 1s;
         }
@@ -56,17 +57,31 @@
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat veniam error quod eveniet, ratione temporibus voluptates nisi delectus deleniti esse dicta blanditiis? Odit, quia. Quae quos enim asperiores id itaque!
         </div>
     </div>
-
     <script>
+        let scrollStatus = 0;
+        let delayedYOffset = 0;
         const copy2 = document.querySelector('.copy2');
         let yOffset = 0;
+        let yOffset2 = 0;
+        let acc = 0.2;
 
-        window.addEventListener('scroll', () => {
-            yOffset = window.pageYOffset
-            
-            if (yOffset > 100) {
-                copy2.style.transform = `translate3d(24vw,${25}vh,0)`;
-            }
+        window.onbeforeunload = function () {
+                window.scrollTo(0, 0);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            window.scrollTo(0,0);
+
+            window.addEventListener('scroll', () => {
+                yOffset = window.pageYOffset;
+                delayedYOffset = 0;
+                // console.log(scrollStatus);
+                if (yOffset > 100) {
+                    copy2.style.transform = `translate3d(25vw,${25}vh,0)`;
+                }
+
+                console.log(delayedYOffset - yOffset);
+            })
         })
     </script>
 </body>

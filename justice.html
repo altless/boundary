@@ -67,7 +67,52 @@
                 transform : translate3d(6vw,30vh,0);
             }
         } */
-        
+.loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100;
+	background: white;
+	opacity: 0;
+	transition: 0.5s;
+}
+.before-load .container {
+    display: none;
+}
+.before-load .loading {
+	opacity: 1;
+}
+@keyframes loading-spin {
+	100% { transform: rotate(360deg); }
+}
+@keyframes loading-circle-ani {
+	0% { stroke-dashoffset: 157; }
+	75% { stroke-dashoffset: -147; }
+	100% { stroke-dashoffset: -157; }
+}
+.loading-circle {
+	width: 54px;
+	height: 54px;
+	animation: loading-spin 3s infinite;
+}
+.loading-circle circle {
+	stroke: black;
+	stroke-width: 4;
+	/* getTotalLength()로 stroke의 길이를 얻어올 수 있음 */
+	stroke-dasharray: 157, 157;
+	stroke-dashoffset: 0;
+	fill: transparent;
+	animation: loading-circle-ani 1s infinite;
+	/* transition: 1s; */
+}
+
+
+
         .up-down-ani-left {
             animation: up-down-left 1.5s;
 
@@ -81,8 +126,10 @@
             height: 100vh;
         }
         .section-2 {
+
             width: 100vw;
             height: 100vh;
+
         }
 
         .container1 {
@@ -96,7 +143,7 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            background-color: transparent
+            background: rgba(0, 0, 0, 1);
         }
         video {
             position: fixed;
@@ -130,7 +177,7 @@
         }
         .container2 {
             position: fixed;
-            top: 0;
+            top: 0vh;
             left: 0;
             width: 100vw;
             height: 100vh;
@@ -138,7 +185,7 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            background-color: transparent;
+            background: rgba(0, 0, 0, 0.5);
         }
 
         .dropzone-house {
@@ -155,7 +202,8 @@
         #poem-box {
             /* font-family: 'Hahmlet', serif; */
             font-weight: 300;
-            padding-top: 5vh;
+            padding-top: 8vh;
+            padding-left: 6vh;
             user-select: none;
             width: 25vw;
             height: 90vh;
@@ -163,7 +211,11 @@
             color: #ff2727;
             font-size: 1.2rem;
             line-height: 0.6rem;
-            border-left: 0.75px solid #ff2727;
+        }
+        .seperate-bar {
+            width: 4px;
+            height: 70vh;
+            border: #ff2727 solid 0.5px;
         }
 
         .side-space {
@@ -185,19 +237,19 @@
             height: 80vh;
             width: auto;
             transition: 1s;
- 
         }
 
         #draggable {
             width: auto;
             height: 2.7vh;
-            text-align: center;
+            text-align: left;
             background: transparent;
+                        cursor: pointer;
         }
-
 
         .dropzone-house #draggable {
             margin-top: -5px;
+            text-align: center;
         }
 
 
@@ -284,6 +336,7 @@
         }
 
         .ggdae-img {
+            pointer-events: none;
             width: 20vw;
         }
 
@@ -309,11 +362,18 @@
     </style>
 </head>
 
-<body>
-<video src="/video/justice/liquid.mp4" autoplay loop preload></video>
-<audio autoplay preload="auto" loop>
-    <source src="audio/8ton.mp3" type="audio/mp3"> 
-</audio>
+<body class="before-load">
+    <div class="loading">
+        <svg class="loading-circle">
+            <circle cx="50%" cy="50%" r="25"></circle>
+        </svg>
+    </div>
+    <video  autoplay loop preload>
+        <source src="/video/justice/liquid2.mp4" type="video/mp4">
+    </video>
+    <audio autoplay preload="auto" loop>
+        <source src="audio/8ton.mp3" type="audio/mp3"> 
+    </audio>
 <div class="section-1">
     <div class="container1">
         <div class="title-house">
@@ -342,6 +402,7 @@
                 <img class="right-img" src="images/justice/right.svg" alt="">
             </div>
         </div>
+        <div class="seperate-bar"></div>
         <div class="poem-dropzone" id="poem-box">
             <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
                 사진에 대고
@@ -440,8 +501,6 @@
         
                     .cls-2 {
                         fill: #ff2727;
-                    }
-                    .menubar-home {
                     }
                 </style>
             </defs>
@@ -592,6 +651,7 @@
         var rafId;
         var isItDown = false;
         var tempacc = window.innerHeight;
+        var loadingCircle = document.querySelector('.loading');
 
         console.log(tempacc);
 
@@ -606,7 +666,7 @@
                 if (Math.abs(tempYOffset - window.innerHeight) < 1) {
                     cancelAnimationFrame(rafId);
                     rafStatus = false;
-		        }
+                }
             }
             else {
                     tempacc -= 10;
@@ -669,6 +729,14 @@
             rightImg.style.transform = `translate3D(6vw, ${8.9 - value}vh, 0)`;
             bar.style.transform = `translate3d(0, 8.9vh, 0) rotate(${-value2}deg)`;
         }
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
+
+        window.addEventListener("load", () => {
+        document.body.classList.remove('before-load');
+        document.body.removeChild(loadingCircle);
+        console.log("loaded");
 
         document.addEventListener("scroll", () => {
             scrollEvent();
@@ -896,13 +964,17 @@
             }
             floorMove();
         }, false);
+        });
 
-        sideBarHouse.addEventListener('mouseover', () => {
-            sideBar.style.transform = `translate3d(${2.5-2.5}vw,0,0)`;
-        })
-        sideBarHouse.addEventListener('mouseout', () => {
-            sideBar.style.transform = `translate3d(${2.5}vw,0,0)`;
-        })
+            sideBarHouse.addEventListener('mouseover', () => {
+                sideBar.style.transform = `translate3d(${2.5 - 2.5}vw,0,0)`;
+            })
+            sideBarHouse.addEventListener('mouseout', () => {
+                sideBar.style.transform = `translate3d(${2.5}vw,0,0)`;
+            })
+
+
+
     </script>
 </body>
 
