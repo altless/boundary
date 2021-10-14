@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,81 +8,205 @@
     <link rel="stylesheet" href="css/default.css">
     <style>
         body {
-            overflow-x: hidden;
-        }
-        .section-1 {
-            display: flex;
             width: 100vw;
             height: 100vh;
-            background-color: blue;
-            justify-content: center;
-            align-items: center;
         }
-        .copy1 {
-            position: fixed;
-            width: 50vw;
-            height: 50vh;
-            background: chocolate;
-        }
-        .section-2 {
-            display: flex;
-            width: 100vw;
-            height: 100vh;
-            background-color: blueviolet;
-            justify-content: center;
-            align-items: center;
-        }
-        .copy2 {
+        .container {
             top: 0;
             left: 0;
-            position: fixed;
-            width: 50vw;
-            height: 50vh;
-            background: transparent;
-            border: tomato 3px solid;
-            transform: translate3d(25vw,125vh,0);
-            display:block;
-            transition: 1s;
+            display: flex;
+            flex-direction:column;
+        }
+        .dropzone-house {
+            width: 100vw;
+            height: 30vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items:flex-end;
+            
+        }
+        .dropzone-house .dropzone {
+            background:blue;
+            width: 2vw;
+            height: 20vh;
+        }
+        .init-zone .dropzone{
+            background: cornflowerblue;
+            width: 100vw;
+            height: 30vh;
+        }
+        #draggable {
+            width: 1.5vw;
+            height: 18vh;
+            background: aquamarine;
         }
     </style>
 </head>
-<body>
-    <div class="section-1">
-        <div class="copy1">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque sint, explicabo quo ad, aspernatur facilis placeat consequatur iste numquam repellendus totam minima suscipit quaerat dolore magnam aliquam voluptates iure maxime natus. Voluptatum laudantium eum dolores velit error sunt qui mollitia, esse omnis vel distinctio id voluptatibus expedita quo quae alias.
+<div class="container">
+    <div class="init-zone">
+        <div class="dropzone" width="20vw">
+            <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                
+            </div>
         </div>
     </div>
-    <div class="section-2">
-        <div class="copy2">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat veniam error quod eveniet, ratione temporibus voluptates nisi delectus deleniti esse dicta blanditiis? Odit, quia. Quae quos enim asperiores id itaque!
-        </div>
+    <div class="dropzone-house">
+        <td>
+            <div class="dropzone"></div>
+        </td>
+        <td>
+            <div class="dropzone"></div>
+        </td>
+        <td>
+            <div class="dropzone"></div>
+        </td>
+        <td>
+            <div class="dropzone"></div>
+        </td>
+        <td>
+            <div class="dropzone"></div>
+        </td>
+        <td>
+            <div class="dropzone"></div>
+        </td>
+        <td>
+            <div class="dropzone"></div>
+        </td>
+        <td>
+            <div class="dropzone"></div>
+        </td>
+        <td>
+            <div class="dropzone"></div>
+        </td>
+        <td>
+            <div class="dropzone"></div>
+        </td>
+        <td>
+            <div class="dropzone"></div>
+        </td>
+        <td>
+            <div class="dropzone"></div>
+        </td>
+        <td>
+            <div class="dropzone"></div>
+        </td>
     </div>
-    <script>
-        let scrollStatus = 0;
-        let delayedYOffset = 0;
-        const copy2 = document.querySelector('.copy2');
-        let yOffset = 0;
-        let yOffset2 = 0;
-        let acc = 0.2;
+    <!-- <table class="dropzone-house">
+        <tr>
+            <td>
+                <div class="dropzone"></div>
+            </td>
+            <td>
+                <div class="dropzone"></div>
+            </td>
+            <td>
+                <div class="dropzone"></div>
+            </td>
+            <td>
+                <div class="dropzone"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="dropzone"></div>
+            </td>
+            <td>
+                <div class="dropzone"></div>
+            </td>
+            <td>
+                <div class="dropzone"></div>
+            </td>
+            <td>
+                <div class="dropzone"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="dropzone"></div>
+            </td>
+            <td>
+                <div class="dropzone"></div>
+            </td>
+            <td>
+                <div class="dropzone"></div>
+            </td>
+            <td>
+                <div class="dropzone"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="dropzone"></div>
+            </td>
+            <td>
+                <div class="dropzone"></div>
+            </td>
+            <td>
+                <div class="dropzone"></div>
+            </td>
+            <td>
+                <div class="dropzone"></div>
+            </td>
+        </tr>
+    </table> -->
 
-        window.onbeforeunload = function () {
-                window.scrollTo(0, 0);
-        }
+</div>
 
-        window.addEventListener('DOMContentLoaded', () => {
-            window.scrollTo(0,0);
 
-            window.addEventListener('scroll', () => {
-                yOffset = window.pageYOffset;
-                delayedYOffset = 0;
-                // console.log(scrollStatus);
-                if (yOffset > 100) {
-                    copy2.style.transform = `translate3d(25vw,${25}vh,0)`;
-                }
+<script>
+var dragged;
 
-                console.log(delayedYOffset - yOffset);
-            })
-        })
+/* events fired on the draggable target */
+document.addEventListener("drag", function( event ) {
+
+}, false);
+
+document.addEventListener("dragstart", function( event ) {
+    // store a ref. on the dragged elem
+    dragged = event.target;
+    // make it half transparent
+    event.target.style.opacity = .5;
+}, false);
+
+document.addEventListener("dragend", function( event ) {
+    // reset the transparency
+    event.target.style.opacity = "";
+}, false);
+
+/* events fired on the drop targets */
+document.addEventListener("dragover", function( event ) {
+    // prevent default to allow drop
+    event.preventDefault();
+}, false);
+
+document.addEventListener("dragenter", function( event ) {
+    // highlight potential drop target when the draggable element enters it
+    if ( event.target.className == "dropzone" ) {
+        event.target.style.background = "purple";
+    }
+
+}, false);
+
+document.addEventListener("dragleave", function( event ) {
+    // reset background of potential drop target when the draggable element leaves it
+    if ( event.target.className == "dropzone" ) {
+        event.target.style.background = "";
+    }
+
+}, false);
+
+document.addEventListener("drop", function( event ) {
+    // prevent default action (open as link for some elements)
+    event.preventDefault();
+    // move dragged elem to the selected drop target
+    if ( event.target.className == "dropzone" ) {
+        event.target.style.background = "";
+        dragged.parentNode.removeChild( dragged );
+        event.target.appendChild( dragged );
+    }
+  
+}, false);
     </script>
 </body>
 </html>
