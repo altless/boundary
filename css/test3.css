@@ -1,0 +1,86 @@
+@charset 'utf-8';
+
+html {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+}
+body {
+    background-color: black;
+    color: white;
+}
+p {
+    line-height: 1.6;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav {
+    width: 90vw;
+    height: 50px;
+    margin: 0 auto;
+}
+.nav-links {
+    position: fixed;
+    width: 90vw;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    border-bottom: solid 1px white ;
+    background-color: black;
+    z-index: 111;
+}
+.nav-links :not(.logo){
+    font-size: 1em;
+    margin-left: 1rem;
+}
+.nav-links .logo {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-right:auto;
+}
+#scroll-section-0 {
+    width: 100vw;
+    height: 100vh;
+    margin: 0 5vw;
+}
+.scroll-icon-space {
+    position: absolute;
+    top: 80px;
+    right: 5vw;
+    font-size: 1.2rem;
+}
+@keyframes scroll-icon-ani {
+    0% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate3d(0,5vh,0);
+    }
+}
+.scroll-icon {
+    width: 100px;
+    height: auto;
+}
+.scroll-icon-ani {
+    animation: scroll-icon-ani 3s infinite;
+}
+.title-space {
+    margin-top: 0vh;
+    width: 90vw;
+    height: 40vh;
+}
+.title {
+    font-size: 10rem;
+}
+.sub-title{
+    font-size: 5rem;
+}
+.box-house{
+    height: 50vh;
+}

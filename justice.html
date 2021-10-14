@@ -144,6 +144,7 @@
             align-items: center;
             justify-content: center;
             background: rgba(0, 0, 0, 1);
+            transition: 3s;
         }
         video {
             position: fixed;
@@ -512,37 +513,55 @@
         var acc = 0.02;
         var rafId;
         var isItDown = false;
-        var tempacc = window.innerHeight;
         var loadingCircle = document.querySelector('.loading');
+        var yOffset = 0;
+        var endYOffset = window.innerHeight;
 
-        console.log(tempacc);
 
-        function scrollEvent () {
-            
-            tempYOffset = tempYOffset + (window.innerHeight - tempYOffset)*acc
 
-            if (window.pageYOffset > 200) {
-                cont1.style.transform = `translate3d(0,${tempYOffset}px,0)`
-                rafId = requestAnimationFrame(scrollEvent);
-                rafStatus = true;
-                if (Math.abs(tempYOffset - window.innerHeight) < 1) {
-                    cancelAnimationFrame(rafId);
-                    rafStatus = false;
-                }
+            window.onbeforeunload = function () {
+                window.scrollTo(0, 0);
             }
-            else {
-                    tempacc -= 10;
-                    cont1.style.transform = `translate3d(0,${tempacc}px,0)`
-                    rafId = requestAnimationFrame(scrollEvent);
-                    rafStatus = true;
-                    if (Math.abs(tempYOffset - window.innerHeight) < 1) {
-                        cancelAnimationFrame(rafId);
-                        rafStatus = false;
-                        tempacc = 0;
+
+            window.addEventListener('DOMContentLoaded', () => {
+                window.scrollTo(0, 0);
+
+                window.addEventListener('scroll', () => {
+                    yOffset = window.pageYOffset;
+                    if (yOffset > 200) {
+                        cont1.style.transform = `translate3d(0,${100}vh,0)`;
                     }
+                })
+            })
+
+
+        // function scrollEvent () {
+            
+        //     tempYOffset = tempYOffset + (window.innerHeight - tempYOffset)*acc;
+        //     endYOffset = endYOffset + (0 - window.innerHeight)*acc;
+
+        //     console.log(parseInt(tempYOffset),parseInt(endYOffset));
+
+        //     if (window.pageYOffset > 200) {
+        //         cont1.style.transform = `translate3d(0,${tempYOffset}px,0)`
+        //         rafId = requestAnimationFrame(scrollEvent);
+        //         rafStatus = true;
+        //         if (Math.abs(tempYOffset - window.innerHeight) < 1) {
+        //             cancelAnimationFrame(rafId);
+        //             rafStatus = false;
+        //         }
+        //     }
+        //     else {
+        //         cont1.style.transform = `translate3d(0,${endYOffset}px,0)`
+        //         rafId = requestAnimationFrame(scrollEvent);
+        //         rafStatus = true;
+        //         if (Math.abs(tempYOffset - window.innerHeight) < 1) {
+        //             cancelAnimationFrame(rafId);
+        //             rafStatus = false;
+        //         }
                 
-            }
-        }
+        //     }
+        // }
 
         // function addPoemClassNum() {
         //     for (var i = 0; i < poemElem.length; i++) {
@@ -598,11 +617,11 @@
         window.addEventListener("load", () => {
         document.body.classList.remove('before-load');
         document.body.removeChild(loadingCircle);
-        console.log("loaded");
 
-        document.addEventListener("scroll", () => {
-            scrollEvent();
-        });
+
+        // document.addEventListener("scroll", () => {
+        //     scrollEvent();
+        // });
         
         /* events fired on the draggable target */
         document.addEventListener("drag", function (event) {
